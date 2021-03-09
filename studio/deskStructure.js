@@ -57,6 +57,24 @@ export default () =>
                     .schemaType('page')
                     .documentId('contact')
                 )
+                .icon(FaFile),
+              S.listItem()
+                .title('Get Involved')
+                .child(
+                  S.editor()
+                    .id('getInvolvedPage')
+                    .schemaType('page')
+                    .documentId('getInvolved')
+                )
+                .icon(FaFile),
+              S.listItem()
+                .title('What We Do')
+                .child(
+                  S.editor()
+                    .id('whatWeDo')
+                    .schemaType('page')
+                    .documentId('whatWeDo')
+                )
                 .icon(FaFile)
             ])
         ),

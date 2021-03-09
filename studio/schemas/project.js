@@ -25,6 +25,11 @@ export default {
       type: 'datetime'
     },
     {
+      title: 'Selected for homepage display',
+      name: 'selected',
+      type: 'boolean'
+    },
+    {
       name: 'excerpt',
       title: 'Excerpt',
       type: 'blockText'

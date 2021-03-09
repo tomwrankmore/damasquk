@@ -1,0 +1,12 @@
+@import '../styles/media-queries.css';
+@import '../styles/vars.css';
+
+.BackgroundLogoAbs {
+    position: absolute;
+    right: 0vw;
+    top: 50vh;
+    z-index: 3;
+    max-width: 45vw;
+    width: 100%;
+    /* opacity: 0.65; */
+}

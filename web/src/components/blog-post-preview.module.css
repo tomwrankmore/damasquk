@@ -1,3 +1,5 @@
+@import '../styles/vars.css';
+
 .root {
   display: block;
   color: inherit;
@@ -8,6 +10,7 @@
   position: relative;
   padding-bottom: 66.666%;
   background: #eee;
+  overflow: hidden;
 
   @nest & img {
     position: absolute;
@@ -16,10 +19,39 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: 0.3s;
   }
+
+  @nest &:after {
+    content: "";
+    background: var(--damasq-light-pink);
+    opacity: 0.25;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: 0;
+    z-index: 2;
+    position: absolute; 
+    transition: 0.3s;
+  }
+
+  /* Hover over the whole div will affect style of nested ::after tag */
+  @media (hover: hover) {
+    @nest .root:hover & {
+      @nest &:after {
+        background: transparent;
+      }
+      @nest & img {
+        transform:scale(1.022);
+      }
+
+    }
+  }
+
 }
 
 .title {
+  padding: 0 0.5rem;
   @media (hover: hover) {
     @nest .root:hover & {
       text-decoration: underline;
@@ -28,6 +60,7 @@
 }
 
 .excerpt {
+  padding: 0 0.5rem;
   @nest & p {
     margin: 0.5em 0;
   }
@@ -35,4 +68,10 @@
   @nest & strong {
     font-weight: 600;
   }
+}
+
+.blogByCategoryGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 4rem;
 }

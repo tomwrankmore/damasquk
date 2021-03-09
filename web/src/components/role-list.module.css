@@ -16,6 +16,15 @@
   padding: 0;
 }
 
+a.authorLink {
+  text-decoration: none;
+  color: black;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 .listItem {
   font-size: var(--font-small-size);
   margin: 1rem 0;

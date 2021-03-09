@@ -3,6 +3,8 @@
 
 .root {
   margin: 2em 0 4em;
+  position: relative;
+  z-index: 4;
 }
 
 .headline {
@@ -29,9 +31,9 @@
     grid-template-columns: 1fr 1fr;
   }
 
-  @media (--media-min-medium) {
+  /* @media (--media-min-medium) {
     grid-template-columns: 1fr 1fr 1fr;
-  }
+  } */
 }
 
 .browseMoreNav {

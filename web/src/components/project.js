@@ -1,16 +1,28 @@
-import { format, distanceInWords, differenceInDays } from 'date-fns'
-import React from 'react'
-import { Link } from 'gatsby'
-import { buildImageObj } from '../lib/helpers'
-import { imageUrlFor } from '../lib/image-url'
-import BlockContent from './block-content'
-import Container from './container'
-import RoleList from './role-list'
+import { format, distanceInWords, differenceInDays } from 'date-fns';
+import React from 'react';
+import { Link } from 'gatsby';
+import { buildImageObj } from '../lib/helpers';
+import { imageUrlFor } from '../lib/image-url';
 
-import styles from './project.module.css'
+import Container from './Container';
+import RoleList from './Role-list';
 
-function Project (props) {
-  const { _rawBody, title, categories, mainImage, members, publishedAt, relatedProjects } = props
+import styles from './Project.module.css';
+import BlockContent from './block-content/Index';
+
+function Project(props) {
+  const {
+    _rawBody,
+    title,
+    categories,
+    mainImage,
+    members,
+    publishedAt,
+    relatedProjects,
+  } = props;
+
+  // const slug = members[0].person.slug.current;
+
   return (
     <article className={styles.root}>
       {props.mainImage && mainImage.asset && (
@@ -39,24 +51,30 @@ function Project (props) {
                   : format(new Date(publishedAt), 'MMMM Do YYYY')}
               </div>
             )}
-            {members && <RoleList items={members} title='Authors' />}
-            {categories && (
+            {members && <RoleList items={members} title="Team Members" />}
+            {/* {categories && (
               <div className={styles.categories}>
                 <h3 className={styles.categoriesHeadline}>Categories</h3>
                 <ul>
-                  {categories.map(category => (
-                    <li key={category._id}>{category.title}</li>
+                  {categories.map((category) => (
+                    <Link to={`/category/${category.slug.current}`}>
+                      <li key={category._id}>{category.title}</li>
+                    </Link>
                   ))}
                 </ul>
               </div>
-            )}
+            )} */}
             {relatedProjects && (
               <div className={styles.relatedProjects}>
-                <h3 className={styles.relatedProjectsHeadline}>Related projects</h3>
+                <h3 className={styles.relatedProjectsHeadline}>
+                  Related projects
+                </h3>
                 <ul>
-                  {relatedProjects.map(project => (
+                  {relatedProjects.map((project) => (
                     <li key={`related_${project._id}`}>
-                      <Link to={`/project/${project.slug.current}`}>{project.title}</Link>
+                      <Link to={`/project/${project.slug.current}`}>
+                        {project.title}
+                      </Link>
                     </li>
                   ))}
                 </ul>
@@ -66,7 +84,7 @@ function Project (props) {
         </div>
       </Container>
     </article>
-  )
+  );
 }
 
-export default Project
+export default Project;

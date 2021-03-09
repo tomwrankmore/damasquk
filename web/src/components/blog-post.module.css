@@ -10,7 +10,9 @@
 .mainImage {
   position: relative;
   background: #eee;
-  padding-bottom: calc(9 / 16 * 100%);
+  max-width: 960px;
+  margin: 0 auto;
+  padding-bottom: calc(9 / 16 * 50%);
 
   @nest & img {
     position: absolute;

@@ -1,10 +1,10 @@
-import React from 'react'
-import { graphql } from 'gatsby'
-import Container from '../components/container'
-import GraphQLErrorList from '../components/graphql-error-list'
-import Project from '../components/project'
-import SEO from '../components/seo'
-import Layout from '../containers/layout'
+import React from 'react';
+import { graphql } from 'gatsby';
+import Container from '../components/Container';
+import GraphQLErrorList from '../components/Graphql-error-list';
+import Project from '../components/Project';
+import SEO from '../components/Seo';
+import Layout from '../containers/Layout';
 
 export const query = graphql`
   query ProjectTemplateQuery($id: String!) {
@@ -14,6 +14,9 @@ export const query = graphql`
       categories {
         _id
         title
+        slug {
+          current
+        }
       }
       relatedProjects {
         title
@@ -52,6 +55,9 @@ export const query = graphql`
       members {
         _key
         person {
+          slug {
+            current
+          }
           image {
             crop {
               _key
@@ -79,14 +85,14 @@ export const query = graphql`
       }
     }
   }
-`
+`;
 
-const ProjectTemplate = props => {
-  const { data, errors } = props
-  const project = data && data.project
+const ProjectTemplate = (props) => {
+  const { data, errors } = props;
+  const project = data && data.project;
   return (
     <Layout>
-      {errors && <SEO title='GraphQL Error' />}
+      {errors && <SEO title="GraphQL Error" />}
       {project && <SEO title={project.title || 'Untitled'} />}
 
       {errors && (
@@ -96,7 +102,7 @@ const ProjectTemplate = props => {
       )}
       {project && <Project {...project} />}
     </Layout>
-  )
-}
+  );
+};
 
-export default ProjectTemplate
+export default ProjectTemplate;

@@ -1,19 +1,21 @@
-import BaseBlockContent from '@sanity/block-content-to-react'
-import React from 'react'
+import BaseBlockContent from '@sanity/block-content-to-react';
+import React from 'react';
 
-import typography from './typography.module.css'
+import typography from './typography.module.css';
 
 const serializers = {
   types: {
-    block (props) {
+    block(props) {
       switch (props.node.style) {
         default:
-          return <p className={typography.paragraph}>{props.children}</p>
+          return <p className={typography.small}>{props.children}</p>;
       }
-    }
-  }
-}
+    },
+  },
+};
 
-const BlockText = ({ blocks }) => <BaseBlockContent blocks={blocks} serializers={serializers} />
+const BlockText = ({ blocks }) => (
+  <BaseBlockContent blocks={blocks} serializers={serializers} />
+);
 
-export default BlockText
+export default BlockText;

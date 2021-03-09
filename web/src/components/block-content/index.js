@@ -1,42 +1,56 @@
-import BaseBlockContent from '@sanity/block-content-to-react'
-import React from 'react'
-import Figure from './figure'
-import Slideshow from './slideshow'
+import BaseBlockContent from '@sanity/block-content-to-react';
+import React from 'react';
+import Figure from './Figure';
+import Slideshow from './Slideshow';
 
-import typography from '../typography.module.css'
+import typography from '../typography.module.css';
 
 const serializers = {
   types: {
-    block (props) {
+    block(props) {
       switch (props.node.style) {
         case 'h1':
-          return <h1 className={typography.responsiveTitle1}>{props.children}</h1>
+          return (
+            <h1 className={typography.responsiveTitle1}>{props.children}</h1>
+          );
 
         case 'h2':
-          return <h2 className={typography.responsiveTitle2}>{props.children}</h2>
+          return (
+            <h2 className={typography.responsiveTitle2}>{props.children}</h2>
+          );
 
         case 'h3':
-          return <h3 className={typography.responsiveTitle3}>{props.children}</h3>
+          return (
+            <h3 className={typography.responsiveTitle3}>{props.children}</h3>
+          );
 
         case 'h4':
-          return <h4 className={typography.responsiveTitle4}>{props.children}</h4>
+          return (
+            <h4 className={typography.responsiveTitle4}>{props.children}</h4>
+          );
 
         case 'blockquote':
-          return <blockquote className={typography.blockQuote}>{props.children}</blockquote>
+          return (
+            <blockquote className={typography.blockQuote}>
+              {props.children}
+            </blockquote>
+          );
 
         default:
-          return <p className={typography.paragraph}>{props.children}</p>
+          return <p className={typography.paragraph}>{props.children}</p>;
       }
     },
-    figure (props) {
-      return <Figure {...props.node} />
+    figure(props) {
+      return <Figure {...props.node} />;
     },
-    slideshow (props) {
-      return <Slideshow {...props.node} />
-    }
-  }
-}
+    slideshow(props) {
+      return <Slideshow {...props.node} />;
+    },
+  },
+};
 
-const BlockContent = ({ blocks }) => <BaseBlockContent blocks={blocks} serializers={serializers} />
+const BlockContent = ({ blocks }) => (
+  <BaseBlockContent blocks={blocks} serializers={serializers} />
+);
 
-export default BlockContent
+export default BlockContent;

@@ -1,11 +1,11 @@
 {
   "root": true,
   "api": {
-    "projectId": "9nhae6b7",
+    "projectId": "s9x3fc4x",
     "dataset": "production"
   },
   "project": {
-    "name": "Gatsby Demo",
+    "name": "Damasq",
     "basePath": "/"
   },
   "plugins": [

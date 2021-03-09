@@ -1,17 +1,20 @@
-import React from 'react'
-import { graphql } from 'gatsby'
-import { mapEdgesToNodes } from '../lib/helpers'
-import BlogPostPreviewGrid from '../components/blog-post-preview-grid'
-import Container from '../components/container'
-import GraphQLErrorList from '../components/graphql-error-list'
-import SEO from '../components/seo'
-import Layout from '../containers/layout'
+import React from 'react';
+import { graphql } from 'gatsby';
+import { mapEdgesToNodes } from '../lib/helpers';
+import BlogPostPreviewGrid from '../components/Blog-post-preview-grid';
+import Container from '../components/Container';
+import GraphQLErrorList from '../components/Graphql-error-list';
+import SEO from '../components/Seo';
+import Layout from '../containers/Layout';
 
-import { responsiveTitle1 } from '../components/typography.module.css'
+import { responsiveTitle1 } from '../components/typography.module.css';
 
 export const query = graphql`
   query BlogPageQuery {
-    posts: allSanityPost(limit: 12, sort: { fields: [publishedAt], order: DESC }) {
+    posts: allSanityPost(
+      limit: 12
+      sort: { fields: [publishedAt], order: DESC }
+    ) {
       edges {
         node {
           id
@@ -31,30 +34,32 @@ export const query = graphql`
       }
     }
   }
-`
+`;
 
-const BlogPage = props => {
-  const { data, errors } = props
+const BlogPage = (props) => {
+  const { data, errors } = props;
 
   if (errors) {
     return (
       <Layout>
         <GraphQLErrorList errors={errors} />
       </Layout>
-    )
+    );
   }
 
-  const postNodes = data && data.posts && mapEdgesToNodes(data.posts)
+  const postNodes = data && data.posts && mapEdgesToNodes(data.posts);
 
   return (
     <Layout>
-      <SEO title='Blog' />
+      <SEO title="Blog" />
       <Container>
         <h1 className={responsiveTitle1}>Blog</h1>
-        {postNodes && postNodes.length > 0 && <BlogPostPreviewGrid nodes={postNodes} />}
+        {postNodes && postNodes.length > 0 && (
+          <BlogPostPreviewGrid nodes={postNodes} />
+        )}
       </Container>
     </Layout>
-  )
-}
+  );
+};
 
-export default BlogPage
+export default BlogPage;

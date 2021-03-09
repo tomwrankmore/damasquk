@@ -1,6 +1,6 @@
 {
   "private": false,
-  "name": "example-company-website-gatsby-sanity-combo",
+  "name": "damasq-charity-site",
   "version": "1.0.0",
   "author": "Sanity <hello@sanity.io>",
   "engines": {
@@ -25,5 +25,19 @@
   "devDependencies": {
     "lerna": "^3.14.1",
     "rimraf": "^2.6.3"
-  }
+  },
+  "dependencies": {
+    "react-share": "^4.3.1"
+  },
+  "description": "This examples combines [Gatsby](https://www.gatsbyjs.org/) site generation with [Sanity](https://www.sanity.io) content management in a neat little company website. Read [the blog post](https://www.sanity.io/blog/get-started-with-gatsby-and-structured-content) and [see the getting started video](https://www.youtube.com/watch?v=qU4lFYp3KiQ).",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sanity-io/example-company-website-gatsby-sanity-combo.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sanity-io/example-company-website-gatsby-sanity-combo/issues"
+  },
+  "homepage": "https://github.com/sanity-io/example-company-website-gatsby-sanity-combo#readme"
 }

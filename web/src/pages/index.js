@@ -1,12 +1,17 @@
-import React from 'react'
-import { graphql } from 'gatsby'
-import { mapEdgesToNodes, filterOutDocsWithoutSlugs } from '../lib/helpers'
-import BlogPostPreviewGrid from '../components/blog-post-preview-grid'
-import Container from '../components/container'
-import GraphQLErrorList from '../components/graphql-error-list'
-import ProjectPreviewGrid from '../components/project-preview-grid'
-import SEO from '../components/seo'
-import Layout from '../containers/layout'
+import React, { useState } from 'react';
+import { graphql } from 'gatsby';
+
+import BackgroundImage from 'gatsby-background-image';
+import { mapEdgesToNodes, filterOutDocsWithoutSlugs } from '../lib/helpers';
+import BlogPostPreviewGrid from '../components/Blog-post-preview-grid';
+import Container from '../components/Container';
+import GraphQLErrorList from '../components/Graphql-error-list';
+import SEO from '../components/Seo';
+import Layout from '../containers/Layout';
+import BigHeroLanding from '../components/Big-hero-landing';
+import CallToAction from '../components/CTA';
+import PrimaryButton from '../components/PrimaryButton';
+import FeaturedProjects from '../components/FeaturedProjects';
 
 export const query = graphql`
   query IndexPageQuery {
@@ -16,7 +21,7 @@ export const query = graphql`
       keywords
     }
 
-    projects: allSanityProject(limit: 6, sort: { fields: [publishedAt], order: DESC }) {
+    projects: allSanityProject(limit: 2, filter: { selected: { eq: true } }) {
       edges {
         node {
           id
@@ -51,7 +56,10 @@ export const query = graphql`
       }
     }
 
-    posts: allSanityPost(limit: 6, sort: { fields: [publishedAt], order: DESC }) {
+    posts: allSanityPost(
+      limit: 6
+      sort: { fields: [publishedAt], order: DESC }
+    ) {
       edges {
         node {
           id
@@ -86,56 +94,94 @@ export const query = graphql`
         }
       }
     }
+    bgImg: file(relativePath: { eq: "remi-walle-UOwvwZ9Dy6w-unsplash.jpg" }) {
+      childImageSharp {
+        fluid(quality: 90, maxWidth: 1920) {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
   }
-`
+`;
 
-const IndexPage = props => {
-  const { data, errors } = props
+const IndexPage = (props) => {
+  const { data, errors } = props;
 
   if (errors) {
     return (
       <Layout>
         <GraphQLErrorList errors={errors} />
       </Layout>
-    )
+    );
   }
 
-  const site = (data || {}).site
+  const { site } = data || {};
   const postNodes = (data || {}).posts
     ? mapEdgesToNodes(data.posts).filter(filterOutDocsWithoutSlugs)
-    : []
+    : [];
   const projectNodes = (data || {}).projects
     ? mapEdgesToNodes(data.projects).filter(filterOutDocsWithoutSlugs)
-    : []
+    : [];
 
   if (!site) {
     throw new Error(
       'Missing "Site settings". Open the studio at http://localhost:3333 and add some content to "Site settings" and restart the development server.'
-    )
+    );
   }
 
   return (
     <Layout>
-      <SEO title={site.title} description={site.description} keywords={site.keywords} />
+      <SEO
+        title={site.title}
+        description={site.description}
+        keywords={site.keywords}
+      />
+
+      <BigHeroLanding />
       <Container>
         <h1 hidden>Welcome to {site.title}</h1>
-        {projectNodes && (
-          <ProjectPreviewGrid
-            title='Latest projects'
-            nodes={projectNodes}
-            browseMoreHref='/projects/'
-          />
-        )}
+
         {postNodes && (
           <BlogPostPreviewGrid
-            title='Latest blog posts'
+            title="Latest blog posts"
             nodes={postNodes}
-            browseMoreHref='/blog/'
+            // browseMoreHref="/blog/"
           />
         )}
       </Container>
+      <CallToAction destination="/about" buttonText="Learn More">
+        <h1 className="ctaHeading">We need your help</h1>
+        <p>
+          We are passionate about bringing communities together and bringing
+          strength with kindess.
+        </p>
+        <PrimaryButton to="/about">Learn More</PrimaryButton>
+      </CallToAction>
+      <Container>
+        {projectNodes && (
+          <FeaturedProjects
+            title="Featured Project"
+            nodes={projectNodes}
+            // browseMoreHref="/projects/"
+          />
+        )}
+      </Container>
+      <BackgroundImage fluid={data.bgImg.childImageSharp.fluid}>
+        <CallToAction
+          myClassName="withBackgroundImage"
+          destination="/about"
+          buttonText="Get Involved"
+        >
+          <h1 className="ctaHeading">Get Involved</h1>
+          <p>
+            We are always on the look out for will volunteers to help us on our
+            mission.
+          </p>
+          <PrimaryButton to="/get-involved">Get Involved</PrimaryButton>
+        </CallToAction>
+      </BackgroundImage>
     </Layout>
-  )
-}
+  );
+};
 
-export default IndexPage
+export default IndexPage;
