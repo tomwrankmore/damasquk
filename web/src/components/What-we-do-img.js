@@ -3,7 +3,7 @@ import { StaticImage } from 'gatsby-plugin-image';
 
 const WhatWeDoImgStyles = {
   width: '100%',
-  // maxWidth: '450px',
+  maxWidth: '500px',
 };
 
 function WhatWeDoImg() {

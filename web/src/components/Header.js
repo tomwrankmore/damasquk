@@ -20,7 +20,7 @@ const Header = ({ onHideNav, onShowNav, showNav, siteTitle }) => (
           <Logo />
         </Link>
       </h1>
-      {console.log(showNav)}
+
       <button
         type="button"
         // switches showNav variable between true and false

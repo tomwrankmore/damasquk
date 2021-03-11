@@ -16,7 +16,6 @@ const Layout = ({
   siteTitle,
 }) => (
   <>
-    {console.log(companyInfo)}
     <Header
       siteTitle={siteTitle}
       onHideNav={onHideNav}

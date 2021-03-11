@@ -9,6 +9,7 @@ import RoleList from './Role-list';
 
 import styles from './Project.module.css';
 import BlockContent from './block-content/Index';
+import SideBarButton from './SidebarButton';
 
 function Project(props) {
   const {
@@ -44,14 +45,15 @@ function Project(props) {
             {_rawBody && <BlockContent blocks={_rawBody || []} />}
           </div>
           <aside className={styles.metaContent}>
-            {publishedAt && (
+            <SideBarButton to="/donate">Donate</SideBarButton>
+            {/* {publishedAt && (
               <div className={styles.publishedAt}>
                 {differenceInDays(new Date(publishedAt), new Date()) > 3
                   ? distanceInWords(new Date(publishedAt), new Date())
                   : format(new Date(publishedAt), 'MMMM Do YYYY')}
               </div>
             )}
-            {members && <RoleList items={members} title="Team Members" />}
+            {members && <RoleList items={members} title="Team Members" />} */}
             {/* {categories && (
               <div className={styles.categories}>
                 <h3 className={styles.categoriesHeadline}>Categories</h3>
