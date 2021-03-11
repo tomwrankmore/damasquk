@@ -3,8 +3,7 @@ import React, { useRef, useEffect } from 'react';
 import { useStaticQuery, graphql, Link } from 'gatsby';
 import BackgroundImage from 'gatsby-background-image';
 import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { SplitText } from 'gsap/SplitText';
+
 import { buildImageObj } from '../lib/helpers';
 import { imageUrlFor } from '../lib/image-url';
 import BlockContent from './block-content/Index';
@@ -18,8 +17,6 @@ import {
 import styles from './Big-hero-landing.module.css';
 import { BackgroundLogoAbs } from './Background-logo-absolute';
 import PrimaryButton from './PrimaryButton';
-
-gsap.registerPlugin(ScrollTrigger, SplitText);
 
 function BigHeroLanding(props) {
   const data = useStaticQuery(graphql`
