@@ -37,7 +37,7 @@ async function createBlogPostPages(graphql, actions, reporter) {
 
     createPage({
       path,
-      component: require.resolve('./src/templates/Blog-post.js'),
+      component: require.resolve('./src/templates/Blog-post-old.js'),
       context: { id },
     });
   });
