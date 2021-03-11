@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import Layout from '../components/Layout';
 
 const query = graphql`
-  query SiteTitleQuery {
+  query {
     site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
       title
     }
