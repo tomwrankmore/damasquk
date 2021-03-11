@@ -106,7 +106,7 @@ async function createPeoplePages(graphql, actions, reporter) {
     const slug = person.slug.current;
     const path = `/person/${slug}/`;
 
-    // reporter.info(`Creating project page: ${path}`);
+    reporter.info(`Creating project page: ${path}`);
 
     createPage({
       path,
