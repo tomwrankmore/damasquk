@@ -1,0 +1,129 @@
+@import '../styles/media-queries.css';
+@import '../styles/vars.css';
+
+.root {
+  position: relative;
+  z-index: 100;
+  background-color: var(--color-light-grey);
+
+}
+
+.wrapper {
+  box-sizing: border-box;
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 1em;
+  display: flex;
+
+  @media (--media-min-small) {
+    padding: 1.5em 1.5em;
+  }
+}
+
+.branding {
+  font-size: inherit;
+  margin: 0;
+  flex: 1;
+
+  @nest & a {
+    display: inline-block;
+    /* padding: 0.5em; */
+    padding: 0;
+    color: inherit;
+    text-decoration: none;
+
+    @media (hover: hover) {
+      @nest &:hover {
+        text-decoration: underline;
+        
+      }
+    }
+  }
+}
+
+.toggleNavButton {
+  appearance: none;
+  font-size: 40px;
+  border: none;
+  color: var(--damasq-dark-grey);
+  background: none;
+  margin: 0;
+  padding: calc(14 / 17 / 2 * 1rem);
+  outline: none;
+  cursor: pointer;
+
+  & svg {
+    display: block;
+  }
+
+  /* hide when it gets to large */
+  @media (--media-min-large) {
+    display: none;
+  }
+}
+
+.nav {
+  display: none;
+
+  @nest & ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  @nest & ul li a {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  @media (hover: hover) {
+    @nest & ul li a:hover {
+      text-decoration: underline;
+      /* font-weight: bold; */
+    }
+  }
+
+  @media (--media-max-large) {
+    position: absolute;
+    background: var(--color-light-grey);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    left: 0;
+    right: 0;
+    top: 6em;
+
+    @nest & ul {
+      padding: 1rem 0;
+    }
+
+    @nest & ul li a {
+      padding: 0.5rem 1.5rem;
+    }
+  }
+
+  /* min-width: 450px */
+  @media (--media-min-small) {
+    top: 7em;
+  }
+
+  @media (--media-min-large) {
+    display: flex!important;
+    align-items: center;
+    justify-content: center;
+
+    @nest & ul {
+      list-style: none;
+      display: flex;
+      justify-content: flex-end;
+      
+    }
+
+    @nest & ul li a {
+      padding: 0.5rem;
+    }
+  }
+}
+
+.showNav {
+  display: block;
+  text-align: center;
+}
