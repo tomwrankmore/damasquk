@@ -2,7 +2,7 @@ import { format, distanceInWords, differenceInDays } from 'date-fns';
 import React, { useRef, useEffect } from 'react';
 import { useStaticQuery, graphql, Link } from 'gatsby';
 import BackgroundImage from 'gatsby-background-image';
-import { gsap } from 'gsap';
+// import { gsap } from 'gsap';
 
 import { buildImageObj } from '../lib/helpers';
 import { imageUrlFor } from '../lib/image-url';
@@ -31,16 +31,16 @@ function BigHeroLanding(props) {
     }
   `);
 
-  const textContentRef = useRef(null);
+  // const textContentRef = useRef(null);
 
-  useEffect(() => {
-    gsap.from(textContentRef.current, {
-      duration: 1,
-      autoAlpha: 0,
-      y: 30,
-      ease: 'back',
-    });
-  }, []);
+  // useEffect(() => {
+  //   gsap.from(textContentRef.current, {
+  //     duration: 1,
+  //     autoAlpha: 0,
+  //     y: 30,
+  //     ease: 'back',
+  //   });
+  // }, []);
 
   return (
     <>
@@ -49,10 +49,10 @@ function BigHeroLanding(props) {
         fluid={data.bgImg.childImageSharp.fluid}
       >
         <div className={styles.bigHeroLanding}>
-          <BackgroundLogoAbs />
+          {/* <BackgroundLogoAbs /> */}
           <Container>
             <div
-              ref={textContentRef}
+              // ref={textContentRef}
               className={styles.bigHeroTextContentWrapper}
             >
               <h5 className={responsiveTitle5}>Give strength with kindess</h5>

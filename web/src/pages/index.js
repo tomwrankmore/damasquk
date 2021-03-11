@@ -139,8 +139,6 @@ const IndexPage = (props) => {
 
       <BigHeroLanding />
       <Container>
-        <h1 hidden>Welcome to {site.title}</h1>
-
         {postNodes && (
           <BlogPostPreviewGrid
             title="Latest blog posts"
