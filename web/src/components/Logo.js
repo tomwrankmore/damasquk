@@ -1,6 +1,5 @@
 import React from 'react';
 import { StaticImage } from 'gatsby-plugin-image';
-import styles from './Logo.module.css';
 
 export function Logo() {
   return (

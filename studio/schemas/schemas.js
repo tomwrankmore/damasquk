@@ -12,6 +12,7 @@ import companyInfo from './companyInfo'
 import figure from './figure'
 import mainImage from './mainImage'
 import page from './page'
+import aboutPage from './aboutPage'
 import person from './person'
 import post from './post'
 import postAuthor from './postAuthor'
@@ -36,6 +37,7 @@ export default createSchema({
     figure,
     mainImage,
     page,
+    aboutPage,
     person,
     post,
     postAuthor,
