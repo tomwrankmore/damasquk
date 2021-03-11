@@ -37,7 +37,7 @@ async function createBlogPostPages(graphql, actions, reporter) {
 
     createPage({
       path,
-      component: require.resolve('./src/templates/Blog-post-old.js'),
+      component: require.resolve('./src/templates/Blog-post-new.js'),
       context: { id },
     });
   });
@@ -73,93 +73,93 @@ async function createProjectPages(graphql, actions, reporter) {
 
     createPage({
       path,
-      component: require.resolve('./src/templates/Project.js'),
+      component: require.resolve('./src/templates/Project-new.js'),
       context: { id },
     });
   });
 }
 
-async function createPeoplePages(graphql, actions, reporter) {
-  const { createPage } = actions;
-  const result = await graphql(`
-    query {
-      allSanityPerson {
-        nodes {
-          id
-          slug {
-            current
-          }
-        }
-      }
-    }
-  `);
+// async function createPeoplePages(graphql, actions, reporter) {
+//   const { createPage } = actions;
+//   const result = await graphql(`
+//     query {
+//       allSanityPerson {
+//         nodes {
+//           id
+//           slug {
+//             current
+//           }
+//         }
+//       }
+//     }
+//   `);
 
-  if (result.errors) throw result.errors;
+//   if (result.errors) throw result.errors;
 
-  const { data } = result;
-  const people = (data.allSanityPerson || {}).nodes || [];
-  // const people = data.allSanityPerson.nodes;
+//   const { data } = result;
+//   const people = (data.allSanityPerson || {}).nodes || [];
+//   // const people = data.allSanityPerson.nodes;
 
-  people.forEach((person) => {
-    const { id } = person;
-    console.log(id);
-    const slug = person.slug.current;
-    const path = `/person/${slug}/`;
+//   people.forEach((person) => {
+//     const { id } = person;
+//     console.log(id);
+//     const slug = person.slug.current;
+//     const path = `/person/${slug}/`;
 
-    reporter.info(`Creating project page: ${path}`);
+//     reporter.info(`Creating project page: ${path}`);
 
-    createPage({
-      path,
-      component: require.resolve('./src/templates/Person.js'),
-      context: { id },
-    });
-  });
-}
+//     createPage({
+//       path,
+//       component: require.resolve('./src/templates/Person.js'),
+//       context: { id },
+//     });
+//   });
+// }
 
-async function createCategoryPages(graphql, actions, reporter) {
-  const { createPage } = actions;
-  const result = await graphql(`
-    query {
-      allSanityCategory {
-        edges {
-          node {
-            id
-            title
-            slug {
-              current
-            }
-          }
-        }
-      }
-    }
-  `);
+// async function createCategoryPages(graphql, actions, reporter) {
+//   const { createPage } = actions;
+//   const result = await graphql(`
+//     query {
+//       allSanityCategory {
+//         edges {
+//           node {
+//             id
+//             title
+//             slug {
+//               current
+//             }
+//           }
+//         }
+//       }
+//     }
+//   `);
 
-  if (result.errors) throw result.errors;
+//   if (result.errors) throw result.errors;
 
-  const { data } = result;
-  const categories = (data.allSanityCategory || {}).edges || [];
+//   const { data } = result;
+//   const categories = (data.allSanityCategory || {}).edges || [];
 
-  categories.forEach((category) => {
-    const { id } = category.node;
-    const slug = category.node.slug.current;
-    const { title } = category.node;
-    const path = `/category/${slug}/`;
+//   categories.forEach((category) => {
+//     const { id } = category.node;
+//     const slug = category.node.slug.current;
+//     const { title } = category.node;
+//     const path = `/category/${slug}/`;
 
-    console.log('title:', title);
+//     console.log('title:', title);
 
-    reporter.info(`Creating project page: ${path}`);
+//     reporter.info(`Creating project page: ${path}`);
 
-    createPage({
-      path,
-      component: require.resolve('./src/templates/Category.js'),
-      context: { id },
-    });
-  });
-}
+//     createPage({
+//       path,
+//       component: require.resolve('./src/templates/Category.js'),
+//       context: { id },
+//     });
+//   });
+// }
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
   await createBlogPostPages(graphql, actions, reporter);
   await createProjectPages(graphql, actions, reporter);
-  await createPeoplePages(graphql, actions, reporter);
-  await createCategoryPages(graphql, actions, reporter);
+  // await createPeoplePages(graphql, actions, reporter);
+  // await createCategoryPages(graphql, actions, reporter);
 };
