@@ -16,6 +16,7 @@ const Layout = ({
   siteTitle,
 }) => (
   <>
+    {console.log(companyInfo)}
     <Header
       siteTitle={siteTitle}
       onHideNav={onHideNav}
@@ -45,7 +46,7 @@ const Layout = ({
         </div> */}
 
         <div className={styles.siteInfo}>
-          © {companyInfo.name} {new Date().getFullYear()}
+          {/* {companyInfo.name} */}© Damasq {new Date().getFullYear()}
           {/* , Built with{' '}
           <a href="https://www.sanity.io">Sanity</a> &amp;
           {` `}
