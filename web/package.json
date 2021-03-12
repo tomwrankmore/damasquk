@@ -36,6 +36,7 @@
     "gatsby-plugin-postcss": "^2.1.16",
     "gatsby-plugin-react-helmet": "^3.1.16",
     "gatsby-plugin-sharp": "^3.0.0",
+    "gatsby-plugin-transition-link": "^1.20.5",
     "gatsby-source-filesystem": "^3.0.0",
     "gatsby-source-sanity": "^5.0.4",
     "gatsby-transformer-sharp": "^3.0.0",
