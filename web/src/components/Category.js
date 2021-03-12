@@ -16,13 +16,14 @@ function Category(items) {
     publishedAt,
   } = items;
 
-  const posts = Object.values(items);
-  const categoryName = posts[0].node.categories[0].title;
+  // const posts = Object.values(items);
+  // const categoryName = posts[0].node.categories[0].title;
 
   return (
     <article className={styles.root}>
       <Container>
-        <h1 className={responsiveTitle1}>Posts relating to: {categoryName}</h1>
+        <p>Hi</p>
+        {/* <h1 className={responsiveTitle1}>Posts relating to: {categoryName}</h1>
         <div className={styles.blogByCategoryGrid}>
           {posts.map((post) => (
             <Link
@@ -44,7 +45,7 @@ function Category(items) {
               </h3>
             </Link>
           ))}
-        </div>
+        </div> */}
       </Container>
     </article>
   );

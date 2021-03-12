@@ -16,7 +16,7 @@ function Person(props) {
   return (
     <article className={styles.root}>
       <Container>
-        <div className={styles.grid}>
+        {/* <div className={styles.grid}>
           <div className={styles.mainContent}>
             <h1 className={styles.title}>{name}</h1>
             <Img
@@ -26,12 +26,13 @@ function Person(props) {
             />
 
             {_rawBio && <BlockContent blocks={_rawBio || []} />}
-            {/* <p>{bio}</p> */}
+            <p>{bio}</p>
           </div>
           <aside className={styles.metaContent}>
             <p>Speciality</p>
           </aside>
-        </div>
+        </div> */}
+        <p>hi</p>
       </Container>
     </article>
   );

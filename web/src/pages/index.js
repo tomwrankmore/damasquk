@@ -94,7 +94,7 @@ export const query = graphql`
         }
       }
     }
-    bgImg: file(relativePath: { eq: "remi-walle-UOwvwZ9Dy6w-unsplash.jpg" }) {
+    bgImg: file(relativePath: { eq: "katt-yukawa-K0E6E0a0R3A-unsplash.jpeg" }) {
       childImageSharp {
         fluid(quality: 90, maxWidth: 1920) {
           ...GatsbyImageSharpFluid_withWebp

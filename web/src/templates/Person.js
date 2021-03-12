@@ -7,32 +7,31 @@ import SEO from '../components/Seo';
 import Layout from '../containers/Layout';
 import Person from '../components/Person';
 
-export const query = graphql`
-  query PersonTemplateQuery($id: String!) {
-    person: sanityPerson(id: { eq: $id }) {
-      id
-      name
-      image {
-        asset {
-          fluid(maxHeight: 500) {
-            ...GatsbySanityImageFluid
-          }
-        }
-      }
-      slug {
-        current
-      }
-      _rawBio
-    }
-  }
-`;
+// export const query = graphql`
+//   query PersonTemplateQuery($id: String!) {
+//     person: sanityPerson(id: { eq: $id }) {
+//       id
+//       name
+//       image {
+//         asset {
+//           fluid(maxHeight: 500) {
+//             ...GatsbySanityImageFluid
+//           }
+//         }
+//       }
+//       slug {
+//         current
+//       }
+//       _rawBio
+//     }
+//   }
+// `;
 
-const PersonTemplate = (props) => {
-  const { data, errors } = props;
-  const person = data && data.person;
-  return (
-    <Layout>
-      {errors && <SEO title="GraphQL Error" />}
+const PersonTemplate = (props) => (
+  // const { data, errors } = props;
+  // const person = data && data.person;
+  <Layout>
+    {/* {errors && <SEO title="GraphQL Error" />}
       {person && <SEO title={person.name || 'Untitled'} />}
 
       {errors && (
@@ -41,9 +40,8 @@ const PersonTemplate = (props) => {
         </Container>
       )}
 
-      {<Person {...person} />}
-    </Layout>
-  );
-};
-
+      {<Person {...person} />} */}
+    <p>hi</p>
+  </Layout>
+);
 export default PersonTemplate;
