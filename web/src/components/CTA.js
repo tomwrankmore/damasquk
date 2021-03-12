@@ -1,8 +1,8 @@
 import { Link } from 'gatsby';
 import React from 'react';
+import styled from 'styled-components';
 import '../styles/vars.css';
 import './typography.module.css';
-import styled from 'styled-components';
 
 const Wrapper = styled.div`
   background-color: var(--damasq-light-pink);
@@ -37,8 +37,8 @@ const Wrapper = styled.div`
   }
 `;
 
-const CallToAction = (props) => (
-  <Wrapper className={props.myClassName}>{props.children}</Wrapper>
+const CallToAction = ({ myClassName, children }) => (
+  <Wrapper className={myClassName}>{children}</Wrapper>
 );
 
 export default CallToAction;

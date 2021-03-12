@@ -158,7 +158,7 @@ const IndexPage = (props) => {
           />
         )}
       </Container>
-      <CallToAction destination="/about" buttonText="Learn More">
+      <CallToAction>
         <h1 className="ctaHeading">We need your help</h1>
         <p>
           We are passionate about bringing communities together and bringing
@@ -176,11 +176,7 @@ const IndexPage = (props) => {
         )}
       </Container>
       <BackgroundImage fluid={data.bgImg.childImageSharp.fluid}>
-        <CallToAction
-          myClassName="withBackgroundImage"
-          destination="/about"
-          buttonText="Get Involved"
-        >
+        <CallToAction myClassName="withBackgroundImage">
           <h1 className="ctaHeading">Get Involved</h1>
           <p>
             We are always on the look out for will volunteers to help us on our
