@@ -2,7 +2,7 @@ import { Link } from 'gatsby';
 import React from 'react';
 
 const primaryButtonStyles = {
-  width: 'fit-content',
+  width: 'max-content',
   padding: '1rem',
   borderRadius: '10px',
   border: '0',
