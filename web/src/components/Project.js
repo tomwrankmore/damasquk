@@ -45,7 +45,6 @@ function Project(props) {
             {_rawBody && <BlockContent blocks={_rawBody || []} />}
           </div>
           <aside className={styles.metaContent}>
-            <SideBarButton to="/donate">Donate</SideBarButton>
             {/* {publishedAt && (
               <div className={styles.publishedAt}>
                 {differenceInDays(new Date(publishedAt), new Date()) > 3
@@ -82,6 +81,12 @@ function Project(props) {
                 </ul>
               </div>
             )}
+            <SideBarButton to="/donate" myClassName="donateBtn">
+              Donate
+            </SideBarButton>
+            <SideBarButton to="/get-involved" myClassName="getInvolvedBtn">
+              Get Involved
+            </SideBarButton>
           </aside>
         </div>
       </Container>

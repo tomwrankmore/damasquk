@@ -128,6 +128,7 @@ const ContactPage = (props) => {
             <a href="https://www.erichowey.dev/writing/form-submission-using-gatsby-sanity-netlify-react-hook-form/">
               Link to finish form.
             </a>
+            Please don't hestitate to get in touch whatever it is regarding.
           </ContactContainerText>
           <ContactContainerForm>
             <form
@@ -160,6 +161,10 @@ const ContactPage = (props) => {
                     pattern: /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/,
                   })}
                 />
+              </label>
+              <label htmlFor="subject">
+                <p>Subject</p>
+                <input name="subject" ref={register({ required: true })} />
               </label>
               <label htmlFor="message">
                 <p>Message</p>

@@ -1,23 +1,19 @@
 import React from 'react';
 import { StaticImage } from 'gatsby-plugin-image';
-
-const WhatWeDoImgStyles = {
-  width: '100%',
-  maxWidth: '500px',
-};
+import styled from 'styled-components';
 
 function WhatWeDoImg() {
   return (
     <StaticImage
-      src="../assets/images/WhatWeDo2.png"
+      src="../assets/images/WhatWeDo3.png"
       alt="What we do"
       placeholder="blurred"
       layout="fullWidth"
-      style={WhatWeDoImgStyles}
+      // style={WhatWeDoImgStyles}
       objectPosition="0 0"
       objectFit="contain"
-      className="wrappingDivClassNameOption"
-      imgClassName="imgClassNameAsWell"
+      className="whatWeDoImgWrapper"
+      imgClassName="whatWeDoImg"
     />
   );
 }

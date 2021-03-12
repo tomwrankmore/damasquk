@@ -75,6 +75,15 @@ export default () =>
                     .schemaType('page')
                     .documentId('whatWeDo')
                 )
+                .icon(FaFile),
+              S.listItem()
+                .title('Donate')
+                .child(
+                  S.editor()
+                    .id('donatePage')
+                    .schemaType('page')
+                    .documentId('donate')
+                )
                 .icon(FaFile)
             ])
         ),
