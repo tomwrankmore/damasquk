@@ -94,6 +94,15 @@ export const query = graphql`
         }
       }
     }
+    BigHeroLandingBg: file(
+      relativePath: { eq: "remi-walle-UOwvwZ9Dy6w-unsplash.jpg" }
+    ) {
+      childImageSharp {
+        fluid(quality: 90, maxWidth: 1920) {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
     bgImg: file(relativePath: { eq: "katt-yukawa-K0E6E0a0R3A-unsplash.jpeg" }) {
       childImageSharp {
         fluid(quality: 90, maxWidth: 1920) {
@@ -137,7 +146,9 @@ const IndexPage = (props) => {
         keywords={site.keywords}
       />
 
-      <BigHeroLanding />
+      <BigHeroLanding
+        BackgroundImage={data.BigHeroLandingBg.childImageSharp.fluid}
+      />
       <Container>
         {postNodes && (
           <BlogPostPreviewGrid

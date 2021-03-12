@@ -19,17 +19,17 @@ import { BackgroundLogoAbs } from './Background-logo-absolute';
 import PrimaryButton from './PrimaryButton';
 
 function BigHeroLanding(props) {
-  const data = useStaticQuery(graphql`
-    query BigHeroQuery {
-      bgImg: file(relativePath: { eq: "remi-walle-UOwvwZ9Dy6w-unsplash.jpg" }) {
-        childImageSharp {
-          fluid(quality: 90, maxWidth: 1920) {
-            ...GatsbyImageSharpFluid_withWebp
-          }
-        }
-      }
-    }
-  `);
+  // const data = useStaticQuery(graphql`
+  //   query BigHeroQuery {
+  //     bgImg: file(relativePath: { eq: "remi-walle-UOwvwZ9Dy6w-unsplash.jpg" }) {
+  //       childImageSharp {
+  //         fluid(quality: 90, maxWidth: 1920) {
+  //           ...GatsbyImageSharpFluid_withWebp
+  //         }
+  //       }
+  //     }
+  //   }
+  // `);
 
   // const textContentRef = useRef(null);
 
@@ -46,7 +46,7 @@ function BigHeroLanding(props) {
     <>
       <BackgroundImage
         className={styles.bigHeroLandingGatsby}
-        fluid={data.bgImg.childImageSharp.fluid}
+        fluid={props.BackgroundImage}
       >
         <div className={styles.bigHeroLanding}>
           {/* <BackgroundLogoAbs /> */}
