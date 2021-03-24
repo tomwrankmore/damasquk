@@ -79,7 +79,6 @@
   @media (hover: hover) {
     @nest & ul li a:hover {
       text-decoration: underline;
-      /* font-weight: bold; */
     }
   }
 
@@ -114,7 +113,6 @@
       list-style: none;
       display: flex;
       justify-content: flex-end;
-      
     }
 
     @nest & ul li a {

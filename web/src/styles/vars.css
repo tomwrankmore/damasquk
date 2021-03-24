@@ -3,7 +3,7 @@
   --color-white: #fff;
   --color-light-grey: #ececec;
   --color-accent: #f43;
-  --color-black-transparent:rgba(0, 0, 0, 0.5);;
+  --color-black-transparent:rgba(0, 0, 0, 0.5);
   --damasq-dark-grey: #4a4f54;
   --damasq-light-grey: #c1c0bc;
   --damasq-dark-turqoise: #6b9fb3;
@@ -11,5 +11,4 @@
   --damasq-light-pink: #d9c6bf;
   --damasq-light-indigo: #b6bcce;
   --damasq-dark-indigo: #545d6d;
-  
 }

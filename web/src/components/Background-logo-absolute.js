@@ -17,7 +17,7 @@ export function BackgroundLogoAbs() {
 
   return (
     <StaticImage
-      src="../assets/images/logo-sign.svg"
+      src="../assets/images/logo-mark-truncated.svg"
       alt="Big Icon"
       placeholder="none"
       layout="fullWidth"

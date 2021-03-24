@@ -49,7 +49,7 @@ function BigHeroLanding(props) {
         fluid={props.BackgroundImage}
       >
         <div className={styles.bigHeroLanding}>
-          {/* <BackgroundLogoAbs /> */}
+          <BackgroundLogoAbs />
           <Container>
             <div
               // ref={textContentRef}
