@@ -2,7 +2,7 @@
 @import '../styles/vars.css';
 
 .BackgroundLogoAbs {
-    position: absolute;
+    position: absolute!important;
     right: 0vw;
     top: 35vh;
     z-index: 3;
