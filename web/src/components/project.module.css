@@ -10,7 +10,7 @@
 .mainImage {
   position: relative;
   background: #eee;
-  max-width: 1200px;
+  max-width: 1024px;
   margin: 0 auto;
   padding-bottom: calc(9 / 16 * 50%);
 
