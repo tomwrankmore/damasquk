@@ -141,9 +141,9 @@ const IndexPage = (props) => {
   return (
     <Layout>
       <SEO
-        title={site.title}
-        description={site.description}
-        keywords={site.keywords}
+      // title={site.title}
+      // description={site.description}
+      // keywords={site.keywords}
       />
 
       <BigHeroLanding
