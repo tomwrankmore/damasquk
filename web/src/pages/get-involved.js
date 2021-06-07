@@ -17,7 +17,7 @@ import {
 import BlockContent from '../components/block-content/Index';
 import { device } from '../styles/MediaQueries';
 import PrimaryButton from '../components/PrimaryButton';
-import HandshakeDivider from '../components/HandshakeDividerImg';
+import LogoDivider from '../components/Logo-page-divider';
 
 export const query = graphql`
   query GetInvolvedPageQuery {
@@ -138,7 +138,7 @@ const TextContainer = styled.div`
 `;
 
 const WaysToHelpWrapper = styled.div`
-  padding: 4rem 0;
+  padding: 0 0 2rem 0;
 `;
 
 const WaysToHelp = styled.div`
@@ -204,7 +204,7 @@ const GetInvolvedPage = (props) => {
             <BlockContent blocks={page._rawBody || []} />
           </TextContainer>
         </TextOverlapGrid>
-        <HandshakeDivider />
+        <LogoDivider />
         <WaysToHelpWrapper>
           <h1 className={responsiveTitle1}>Ways to help out</h1>
           <WaysToHelp>

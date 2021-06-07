@@ -9,7 +9,7 @@ import Layout from '../containers/Layout';
 import { mapEdgesToNodes, filterOutDocsWithoutSlugs } from '../lib/helpers';
 import Hero from '../components/Page-hero-image';
 import { device } from '../styles/MediaQueries';
-import HandshakeDivider from '../components/HandshakeDividerImg';
+import LogoDivider from '../components/Logo-page-divider';
 import {
   responsiveTitle1,
   responsiveTitle2,
@@ -80,7 +80,7 @@ export const query = graphql`
 `;
 
 const WaysToHelpWrapper = styled.div`
-  padding: 4rem 0;
+  padding: 0 0 2rem 0;
 `;
 
 const WaysToHelp = styled.div`
@@ -199,7 +199,7 @@ const GetInvolvedPage = (props) => {
             <BlockContent blocks={page._rawBody || []} />
           </TextContainer>
         </TextOverlapGrid>
-        <HandshakeDivider />
+        <LogoDivider />
         <WaysToHelpWrapper>
           <h1 className={responsiveTitle1}>Ways to help out</h1>
           <WaysToHelp>
