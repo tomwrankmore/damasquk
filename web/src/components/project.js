@@ -67,9 +67,9 @@ function Project(props) {
             )} */}
             {relatedProjects && (
               <div className={styles.relatedProjects}>
-                <h3 className={styles.relatedProjectsHeadline}>
+                {/* <h3 className={styles.relatedProjectsHeadline}>
                   Related projects
-                </h3>
+                </h3> */}
                 <ul>
                   {relatedProjects.map((project) => (
                     <li key={`related_${project._id}`}>

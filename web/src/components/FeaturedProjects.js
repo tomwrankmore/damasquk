@@ -1,4 +1,4 @@
-import { Link as GatsbyLink } from 'gatsby';
+import { Link } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -6,29 +6,12 @@ import '../styles/media-queries.css';
 import { responsiveTitle4 } from './typography.module.css';
 import FeaturedProjectPreview from './FeaturedProjectPreview';
 
-const FeaturedProjectWrapper = styled.div`
-  justify-content: center;
-  height: 75vh;
-  display: flex;
-  flex-direction: column;
-
-  .headline {
-    font-size: var(--font-small-size);
-    line-height: var(--font-small-line-height);
-    margin: 2rem 0;
-
-    @nest & a {
-      color: inherit;
-      text-decoration: none;
-    }
-  }
-`;
+const FeaturedProjectWrapper = styled.div``;
 
 const TextWrapper = styled.div`
   border: solid 1px var(--color-light-grey);
   padding: 1rem 1.5rem;
   margin-right: 0;
-
   border-radius: 0;
   position: relative;
   display: block;
@@ -47,8 +30,15 @@ const TextWrapper = styled.div`
   }
 `;
 
+const FeaturedProjectGrid = styled.div`
+  width: 100%;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-auto-rows: 1fr;
+`;
+
 function FeaturedProject(props) {
-  console.log(props);
   return (
     <FeaturedProjectWrapper>
       {' '}
@@ -64,13 +54,15 @@ function FeaturedProject(props) {
           )}{' '}
         </h3>
       )}{' '}
-      {props.nodes &&
-        props.nodes.map((project) => (
-          <section key={project.id}>
-            {' '}
-            <FeaturedProjectPreview {...project} />{' '}
-          </section>
-        ))}
+      <FeaturedProjectGrid>
+        {props.nodes &&
+          props.nodes.map((project) => (
+            <section key={project.id}>
+              {' '}
+              <FeaturedProjectPreview {...project} />{' '}
+            </section>
+          ))}
+      </FeaturedProjectGrid>
     </FeaturedProjectWrapper>
   );
 }

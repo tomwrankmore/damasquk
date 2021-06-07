@@ -122,7 +122,11 @@ const ContactPage = (props) => {
       <SEO title={page.title} />
       <Container>
         <h1 className={responsiveTitle1}>{page.title}</h1>
-        <ContactContainer>
+        <p>
+          For any enquiries please <a href="mailto=this@this.com">email us</a>{' '}
+          at email@email.com
+        </p>
+        {/* <ContactContainer>
           <ContactContainerText>
             <p>Follow on from Part 3: Sending it to Netlify</p>
             <a href="https://www.erichowey.dev/writing/form-submission-using-gatsby-sanity-netlify-react-hook-form/">
@@ -191,7 +195,7 @@ const ContactPage = (props) => {
               </div>
             </form>
           </ContactContainerForm>
-        </ContactContainer>
+        </ContactContainer> */}
       </Container>
     </Layout>
   );

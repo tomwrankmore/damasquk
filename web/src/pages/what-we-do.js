@@ -15,6 +15,7 @@ import { device, screenSizes } from '../lib/device';
 import CallToAction from '../components/CTA';
 import '../styles/vars.css';
 import BlockContent from '../components/block-content/Index';
+import Hero from '../components/Page-hero-image';
 import {
   responsiveTitle1,
   responsiveTitle2,
@@ -26,6 +27,15 @@ import {
 
 export const query = graphql`
   query WhatWeDoQuery {
+    desktop: file(
+      relativePath: { eq: "aaron-doucett-HkbeLxOJlqk-unsplash.jpeg" }
+    ) {
+      childImageSharp {
+        fluid(quality: 90, maxWidth: 1920) {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
     page: sanityPage(_id: { regex: "/(drafts.|)whatWeDo/" }) {
       id
       title
@@ -52,20 +62,9 @@ const MainIntro = styled.div`
   }
   align-items: center;
   text-align: center;
-
-  /* &.whatWeDoImgWrapper {
-    width: '100%';
-    max-width: '350px';
-    margin: 0 auto;
-    @media ${screenSizes.mediaMinLarge} {
-      max-width: '500px';
-      margin: 0;
-    }
-  } */
 `;
 
 const Heading = styled.header`
-  /* margin-top: 96px; */
   max-width: 100%;
   margin-bottom: 2rem;
   @media ${screenSizes.mediaMinLarge} {
@@ -118,42 +117,41 @@ const WhatWeDoPage = (props) => {
   }
 
   const page = data && data.page;
-  // const personNodes =
-  //   data &&
-  //   data.people &&
-  //   mapEdgesToNodes(data.people).filter(filterOutDocsWithoutSlugs);
+  const backgroundImageData = data && data.desktop.childImageSharp.fluid;
 
   if (!page) {
     throw new Error(
       'Missing "What We Do Page" page data. Open the studio at http://localhost:3333 and add "What We Do" page data and restart the development server.'
     );
   }
-  // console.log('personNodes', personNodes);
+
   return (
     <Layout>
       <SEO title={page.title} />
-      {/* <SEO title="What we do" /> */}
       <Container>
         {/* <BlockContent blocks={page._rawBody || []} /> */}
-        {/* {personNodes && personNodes.length > 0 && (
-          <PeopleGrid items={personNodes} title="Our Team" />
-        )} */}
 
+        <h1 className={responsiveTitle1}>{page.title}</h1>
+        <Hero imageData={backgroundImageData} />
         <MainIntro>
           <Heading>
-            <h1 className={responsiveTitle1}>{page.title}</h1>
             <p>
-              Mozilla is a non-profit organisation working to ensure the
-              internet is open and welcoming to all. And we need your help. By
-              joining our community, you can help drive innovation, enhance
-              accountability and trust and make the internet a better place for
-              everyone.
+              DAMASQ works to support refugees, asylum seekers, migrants and
+              minority communities generally. We do this by helping to alleviate
+              poverty through a range of projects and programmes in education,
+              enterprise and employment generation. We also work to enrich and
+              support cultural, artistic, sporting and heritage activity and
+              awareness. In promoting these activities we place value on
+              enhancing social inclusion and good citizenship. We aim to help
+              heal divided communities by promoting sustainable community
+              development and engagement.
             </p>
           </Heading>
 
           <WhatWeDoImg />
         </MainIntro>
-        <TwoColWrapper>
+
+        {/* <TwoColWrapper>
           <MinmaxGrid>
             <div>
               <SubHeading className={responsiveTitle4}>Advocacy</SubHeading>
@@ -176,7 +174,7 @@ const WhatWeDoPage = (props) => {
               </p>
             </div>
           </MinmaxGrid>
-        </TwoColWrapper>
+        </TwoColWrapper> */}
 
         <WaysToHelpWrapper>
           <h1 className={responsiveTitle1}>Ways to help out</h1>

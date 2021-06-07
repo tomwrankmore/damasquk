@@ -21,7 +21,7 @@ export const query = graphql`
       keywords
     }
 
-    projects: allSanityProject(limit: 2, filter: { selected: { eq: true } }) {
+    projects: allSanityProject(limit: 8, filter: { selected: { eq: true } }) {
       edges {
         node {
           id
@@ -171,7 +171,7 @@ const IndexPage = (props) => {
           <FeaturedProjects
             title="Featured Project"
             nodes={projectNodes}
-            // browseMoreHref="/projects/"
+            browseMoreHref="/projects/"
           />
         )}
       </Container>

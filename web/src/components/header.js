@@ -1,9 +1,9 @@
 import { Link } from 'gatsby';
 import React from 'react';
 
+import styled from 'styled-components';
 import Icon from './icons/Index';
 import { cn } from '../lib/helpers';
-
 import styles from './Header.module.css';
 import { Logo } from './Logo';
 import NavLink from './Nav-link';
@@ -11,6 +11,13 @@ import NavLink from './Nav-link';
 // onHideNav is a function that changes the state of showNav to false
 // onShowNav is a function that changes the state of showNav to true
 // showNav is a boolean
+
+const DonateLink = styled(Link)`
+  background-color: var(--damasq-dark-indigo);
+  color: var(--color-light-grey);
+  border-radius: 10px;
+  margin-left: 8px;
+`;
 
 const Header = ({ onHideNav, onShowNav, showNav, siteTitle }) => (
   <div className={styles.root}>
@@ -30,18 +37,32 @@ const Header = ({ onHideNav, onShowNav, showNav, siteTitle }) => (
         {showNav ? <Icon symbol="cross" /> : <Icon symbol="hamburger" />}
       </button>
 
-      {/* conditionally adds showNav to nav class based whether showNav is true or no */}
+      {/* conditionally adds showNav to nav class based whether showNav is true or not */}
       <nav className={cn(styles.nav, showNav && styles.showNav)}>
         <ul>
-          <NavLink to="/about/">About</NavLink>
-          <NavLink to="/what-we-do/">What We Do</NavLink>
-          <NavLink to="/get-involved/">Get Involved</NavLink>
-          <NavLink to="/project/community-cafe/">Projects</NavLink>
-          <NavLink to="/blog/">Blog</NavLink>
-          <NavLink to="/contact/">Contact</NavLink>
-          <NavLink to="/donate/" className="donateNavLink">
-            Donate
-          </NavLink>
+          <li>
+            <Link to="/about/">About</Link>
+          </li>
+          <li>
+            <Link to="/what-we-do-2/">What We Do</Link>
+          </li>
+          <li>
+            <Link to="/get-involved/">Get Involved</Link>
+          </li>
+          <li>
+            <Link to="/projects/">Projects</Link>
+          </li>
+          {/* <li>
+            <Link to="/blog/">Blog</Link>
+          </li> */}
+          <li>
+            <Link to="/contact/">Contact</Link>
+          </li>
+          <li>
+            <DonateLink to="/donate/" className="donateNavLink">
+              Donate
+            </DonateLink>
+          </li>
         </ul>
       </nav>
     </div>

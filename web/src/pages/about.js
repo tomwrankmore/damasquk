@@ -32,16 +32,19 @@ const MainTitle = styled.h1`
   text-align: center;
 `;
 
-const AboutStatement = styled.h3`
-  text-align: center;
+const AboutStatement = styled.div`
   margin-bottom: 4rem;
+`;
+
+const AboutStatementParagraph = styled.p`
+  text-align: center;
   font-weight: 400;
   font-size: var(--font-title3-size);
   line-height: 2.3rem;
 `;
 
 const Paragraph = styled.p`
-  /* color: tomato; */
+  padding: 0 0.875rem;
 `;
 
 const MissionGrid = styled.div`
@@ -53,7 +56,7 @@ const MissionGrid = styled.div`
 
 const Testimonials = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   gap: 4rem;
 `;
 
@@ -128,8 +131,6 @@ const AboutPage = (props) => {
     data.people &&
     mapEdgesToNodes(data.people).filter(filterOutDocsWithoutSlugs);
 
-  console.log('data.page._rawBody', data.page._rawBody);
-
   if (!page) {
     throw new Error(
       'Missing "About" page data. Open the studio at http://localhost:3333 and add "About" page data and restart the development server.'
@@ -141,42 +142,60 @@ const AboutPage = (props) => {
       <Container>
         <MainTitle className={responsiveTitle1}>{page.title}</MainTitle>
         {/* <BlockContent blocks={page._rawBody || []} /> */}
-
         <AboutStatement>
-          Here is an intro statment about Damasq charity. It embodies some of
-          our deepest hopes for human progress. It enables new opportunities for
-          learning, building a sense of shared humanity, and solving the
-          pressing problems facing people everywhere.
+          <AboutStatementParagraph>
+            Based in Leeds, DAMASQ originated directly from the first-hand
+            experience of migrants. Dating from our formation in 2016 we took
+            the initiative and the responsibility to support new migrants, to
+            help empower them, and to make them feel welcomed and valued.
+          </AboutStatementParagraph>
+          <AboutStatementParagraph>
+            We have also learned that migrants can add value, experience
+            knowledge and skills to the communities in which they live, and
+            therefore everyone benefits. DAMASQ works to support migrants, to
+            enhance and project a positive vision of their roles and
+            contributions to the communities in which they live. DAMASQ is
+            committed to be open, inclusive and fair to all.
+          </AboutStatementParagraph>
         </AboutStatement>
 
         <AboutStaticImage />
-
         <HandshakeDivider />
 
         <MinmaxGrid>
           <div>
-            <SubHeading className={responsiveTitle4}>Our Journey</SubHeading>
+            <SubHeading className={responsiveTitle3}>Our Vision</SubHeading>
             <Paragraph className={paragraph}>
-              The open, global internet is the most powerful communication and
-              collaboration resource we have ever seen. It embodies some of our
-              deepest hopes for human progress. It enables new opportunities for
-              learning, building a sense of shared humanity, and solving the
-              pressing problems facing people everywhere.
+              Our vision embraces the idea that communities and individuals
+              prosper most when society has a positive view of the potential of
+              all its members. DAMASQ believes that migrants can contribute to
+              the community institutions structures and values which allow all
+              citizens to flourish. We aim to help to create a fair society for
+              all in which with equal opportunities are promoted within a
+              culture which is inclusive, caring, supportive and in which people
+              are valued and respected.
             </Paragraph>
           </div>
           <div>
-            <SubHeading className={responsiveTitle4}>Our Mission</SubHeading>
+            <SubHeading className={responsiveTitle3}>Our Mission</SubHeading>
             <Paragraph className={paragraph}>
-              The open, global internet is the most powerful communication and
-              collaboration resource we have ever seen. It embodies some of our
-              deepest hopes for human progress. It enables new opportunities for
-              learning, building a sense of shared humanity, and solving the
-              pressing problems facing people everywhere.
+              Damasq recognises challenges that face new migrants and people in
+              need. We believe in the power of connection and connecting
+              communities by promoting cultural and intercultural awareness, and
+              by promoting action, services and community resources. By
+              connecting services with people though events, projects, dialogue,
+              guidance and education our vision in action is to enhance
+              community cohesion and development. In this way we see DAMASQ
+              acting as an opinion and action leader in the promotion of the
+              City of Leeds as a location of outstanding practice in welcoming
+              migrants and in enabling their role in making the city a
+              pioneering centre for the values of peace, development and
+              community cohesion.
             </Paragraph>
           </div>
         </MinmaxGrid>
       </Container>
-      <ContainerLarge>
+      {/* <ContainerLarge>
         <MainTitle className={responsiveTitle1}>What People Say</MainTitle>
         <Testimonials>
           <Testimonial>
@@ -210,7 +229,7 @@ const AboutPage = (props) => {
             </SubHeading>
           </Testimonial>
         </Testimonials>
-      </ContainerLarge>
+      </ContainerLarge> */}
       <BackgroundImage fluid={data.bgImg.childImageSharp.fluid}>
         <CallToAction
           myClassName="withBackgroundImage"
