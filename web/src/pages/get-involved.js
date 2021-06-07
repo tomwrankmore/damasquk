@@ -111,7 +111,7 @@ const TextContainer = styled.div`
   grid-row: 3/4;
   background-color: #ffffffde;
   z-index: 10;
-  padding: 0 0.5rem 1rem 0.5rem;
+  padding: 1rem 1.5rem 1rem;
   align-self: center;
   border-bottom: solid 10px var(--damasq-dark-turqoise);
   box-shadow: 1px 1px 8px -2px rgb(181 181 181 / 69%);
