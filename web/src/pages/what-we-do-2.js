@@ -9,6 +9,7 @@ import Layout from '../containers/Layout';
 import { mapEdgesToNodes, filterOutDocsWithoutSlugs } from '../lib/helpers';
 import Hero from '../components/Page-hero-image';
 import { device } from '../styles/MediaQueries';
+import HandshakeDivider from '../components/HandshakeDividerImg';
 import {
   responsiveTitle1,
   responsiveTitle2,
@@ -198,7 +199,7 @@ const GetInvolvedPage = (props) => {
             <BlockContent blocks={page._rawBody || []} />
           </TextContainer>
         </TextOverlapGrid>
-
+        <HandshakeDivider />
         <WaysToHelpWrapper>
           <h1 className={responsiveTitle1}>Ways to help out</h1>
           <WaysToHelp>

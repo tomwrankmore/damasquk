@@ -149,7 +149,7 @@ const IndexPage = (props) => {
       <BigHeroLanding
         BackgroundImage={data.BigHeroLandingBg.childImageSharp.fluid}
       />
-      <Container>
+      {/* <Container>
         {postNodes && (
           <BlogPostPreviewGrid
             title="Latest blog posts"
@@ -157,7 +157,7 @@ const IndexPage = (props) => {
             // browseMoreHref="/blog/"
           />
         )}
-      </Container>
+      </Container> */}
       <CallToAction>
         <h1 className="ctaHeading">We need your help</h1>
         <p>

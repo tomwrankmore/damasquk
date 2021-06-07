@@ -9,9 +9,15 @@ import SEO from '../components/Seo';
 import Layout from '../containers/Layout';
 import { mapEdgesToNodes, filterOutDocsWithoutSlugs } from '../lib/helpers';
 import Hero from '../components/Page-hero-image';
-import { responsiveTitle1 } from '../components/typography.module.css';
+import {
+  responsiveTitle1,
+  responsiveTitle3,
+  small,
+} from '../components/typography.module.css';
 import BlockContent from '../components/block-content/Index';
 import { device } from '../styles/MediaQueries';
+import PrimaryButton from '../components/PrimaryButton';
+import HandshakeDivider from '../components/HandshakeDividerImg';
 
 export const query = graphql`
   query GetInvolvedPageQuery {
@@ -131,6 +137,33 @@ const TextContainer = styled.div`
   }
 `;
 
+const WaysToHelpWrapper = styled.div`
+  padding: 4rem 0;
+`;
+
+const WaysToHelp = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 4rem;
+`;
+
+const Item = styled.div`
+  border: solid 1px var(--color-light-grey);
+  border-radius: 10px;
+  text-align: center;
+  padding: 0.5rem 2rem 1.5rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  box-shadow: 1px 1px 8px -2px rgba(102, 102, 102, 0.69);
+
+  .helpOutBtn {
+    align-self: flex-end;
+    justify-self: flex-end;
+  }
+`;
+
 // const TextContainer = styled.div`
 //   max-width: 75%;
 // `;
@@ -171,6 +204,36 @@ const GetInvolvedPage = (props) => {
             <BlockContent blocks={page._rawBody || []} />
           </TextContainer>
         </TextOverlapGrid>
+        <HandshakeDivider />
+        <WaysToHelpWrapper>
+          <h1 className={responsiveTitle1}>Ways to help out</h1>
+          <WaysToHelp>
+            <Item>
+              <h3 className={responsiveTitle3}>Donate</h3>
+              <p className={small}>
+                We are a not for profit charity and we rely on donations from
+                the public to continue our work.
+              </p>
+              <PrimaryButton to="/donate">Donate</PrimaryButton>
+            </Item>
+            <Item>
+              <h3 className={responsiveTitle3}>Volunteer</h3>
+              <p className={small}>
+                Please check our Get Involved page for volunteering
+                opportunities, or contact us with the subject 'Volunteer'
+              </p>
+              <PrimaryButton to="/contact">Contact Us</PrimaryButton>
+            </Item>
+            <Item>
+              <h3 className={responsiveTitle3}>Dine with us</h3>
+              <p className={small}>
+                Come and join us at one of our events. More details will be
+                available soon on our Projects page
+              </p>
+              <PrimaryButton to="/community-cafe">Community Cafe</PrimaryButton>
+            </Item>
+          </WaysToHelp>
+        </WaysToHelpWrapper>
       </Container>
     </Layout>
   );
