@@ -114,7 +114,7 @@ const TextContainer = styled.div`
   padding: 1rem 1.5rem 1rem;
   align-self: center;
   border-bottom: solid 10px var(--damasq-dark-turqoise);
-  box-shadow: 1px 1px 8px -2px rgb(181 181 181 / 69%);
+  box-shadow: 2px 1px 8px -2px rgb(181 181 181 / 69%);
 
   a {
     text-decoration: underline;
