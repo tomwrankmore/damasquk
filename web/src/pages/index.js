@@ -15,11 +15,11 @@ import FeaturedProjects from '../components/FeaturedProjects';
 
 export const query = graphql`
   query IndexPageQuery {
-    site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
-      title
-      description
-      keywords
-    }
+    # site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
+    #   title
+    #   description
+    #   keywords
+    # }
 
     projects: allSanityProject(limit: 8, filter: { selected: { eq: true } }) {
       edges {
@@ -140,11 +140,11 @@ const IndexPage = (props) => {
 
   return (
     <Layout>
-      <SEO
+      {/* <SEO
         title={site.title}
         description={site.description}
         keywords={site.keywords}
-      />
+      /> */}
 
       <BigHeroLanding
         BackgroundImage={data.BigHeroLandingBg.childImageSharp.fluid}
