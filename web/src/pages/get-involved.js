@@ -138,7 +138,7 @@ const TextContainer = styled.div`
 `;
 
 const WaysToHelpWrapper = styled.div`
-  padding: 0 0 2rem 0;
+  padding: 0 0 1.875rem 0;
 `;
 
 const WaysToHelp = styled.div`
