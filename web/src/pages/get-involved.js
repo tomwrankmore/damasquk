@@ -79,9 +79,11 @@ export const query = graphql`
 
 const TextOverlapGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  /* grid-template-rows: 80px 1fr 1fr; */
+  grid-template-columns: repeat(6, 1fr);
   grid-auto-rows: min-content;
+  img {
+    border-radius: 1rem;
+  }
   @media ${device.mediaMinXLarge} {
     grid-auto-rows: repeat(6, 110px);
   }
@@ -89,7 +91,7 @@ const TextOverlapGrid = styled.div`
     grid-column: 1/-1;
     grid-row: 2/3;
     @media ${device.mediaMinXLarge} {
-      grid-column: 1/6;
+      grid-column: 1/-1;
       grid-row: 2/4;
     }
   }
@@ -98,8 +100,9 @@ const TextOverlapGrid = styled.div`
 const Title = styled.h1`
   grid-column: 1/-1;
   grid-row: 1;
+  border-radius: 0 1rem 1rem 0;
+  background-color: var(--color-body-bg);
   z-index: 10;
-  background: white;
   justify-self: flex-start;
   padding: 0;
   align-self: center;
@@ -117,10 +120,19 @@ const TextContainer = styled.div`
   grid-row: 3/4;
   background-color: #ffffffde;
   z-index: 10;
-  padding: 1rem 1.5rem 1rem;
+  padding: 0.875rem 2.25rem 1.25rem 2.25rem;
   align-self: center;
   border-bottom: solid 10px var(--damasq-dark-turqoise);
   box-shadow: 2px 1px 8px -2px rgb(181 181 181 / 69%);
+  border-radius: 1rem;
+  h3 {
+    font-weight: normal;
+    line-height: 2rem;
+    text-align: center;
+    @media ${device.mediaMinXLarge} {
+      text-align: left;
+    }
+  }
 
   a {
     text-decoration: underline;
@@ -129,7 +141,8 @@ const TextContainer = styled.div`
     }
   }
   @media ${device.mediaMinXLarge} {
-    padding: 1.5rem 1.875rem 1rem 1.875rem;
+    border-radius: 0;
+    padding: 0.875rem 1.875rem 1rem 1.875rem;
     grid-column: 3/-1;
     grid-row: 3/4;
     border-bottom: none;
@@ -149,6 +162,7 @@ const WaysToHelp = styled.div`
 
 const Item = styled.div`
   border: solid 1px var(--color-light-grey);
+  background-color: white;
   border-radius: 10px;
   text-align: center;
   padding: 0.5rem 2rem 1.5rem 2rem;

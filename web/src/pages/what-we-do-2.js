@@ -85,12 +85,13 @@ const WaysToHelpWrapper = styled.div`
 
 const WaysToHelp = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 4rem;
 `;
 
 const Item = styled.div`
   border: solid 1px var(--color-light-grey);
+  background-color: var(--color-white);
   border-radius: 10px;
   text-align: center;
   padding: 0.5rem 2rem 1.5rem 2rem;
@@ -108,17 +109,19 @@ const Item = styled.div`
 
 const TextOverlapGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  /* grid-template-rows: 80px 1fr 1fr; */
+  grid-template-columns: repeat(6, 1fr);
   grid-auto-rows: min-content;
-  @media ${device.mediaMinXLarge} {
+  /* @media ${device.mediaMinXLarge} {
     grid-auto-rows: repeat(6, 110px);
-  }
+  } */
   .hero-ting {
     grid-column: 1/-1;
     grid-row: 2/3;
+    img {
+      border-radius: 1rem;
+    }
     @media ${device.mediaMinXLarge} {
-      grid-column: 1/6;
+      grid-column: 1/-1;
       grid-row: 2/4;
     }
   }
@@ -133,7 +136,8 @@ const Title = styled.h1`
   padding: 0;
   align-self: center;
   display: block;
-  /* margin: 0; */
+  border-radius: 0 1rem 1rem 0;
+  background-color: var(--color-body-bg);
   @media ${device.mediaMinXLarge} {
     grid-row: 2;
     padding: 10px 15px;
@@ -144,19 +148,42 @@ const Title = styled.h1`
 const TextContainer = styled.div`
   grid-column: 1/-1;
   grid-row: 3/4;
-  background-color: #ffffffde;
+  /* background-color: var(--damasq-dark-indigo); */
+  background-color: transparent;
+  color: var(--color-black);
   z-index: 10;
-  padding: 1rem 1.5rem 1rem;
+  padding: 0;
   align-self: center;
-  border-bottom: solid 10px var(--damasq-dark-turqoise);
-  box-shadow: 1px 1px 8px -2px rgb(181 181 181 / 69%);
+  text-align: center;
+
+  h3 {
+    color: var(--damasq-dark-grey);
+    line-height: 2rem;
+    font-weight: normal;
+  }
 
   @media ${device.mediaMinXLarge} {
-    padding: 1.5rem 1.875rem 1rem 1.875rem;
+    text-align: left;
+    padding: 0.875rem 2.25rem 1.25rem 2.25rem;
+    box-shadow: 1px 1px 8px -2px rgb(181 181 181 / 69%);
     grid-column: 3/-1;
     grid-row: 3/4;
     border-bottom: none;
     border-left: solid 10px var(--damasq-dark-turqoise);
+    background-color: #ffffffde;
+  }
+`;
+
+const SecondTextSection = styled.section`
+  padding: 4rem 8rem;
+  border-radius: 1rem;
+  /* background-color: var(--color-white); */
+  margin-bottom: 4rem;
+
+  h3 {
+    text-align: center;
+    line-height: 2rem;
+    font-weight: normal;
   }
 `;
 
@@ -199,7 +226,18 @@ const GetInvolvedPage = (props) => {
             <BlockContent blocks={page._rawBody || []} />
           </TextContainer>
         </TextOverlapGrid>
-        <LogoDivider />
+
+        <SecondTextSection>
+          <LogoDivider />
+          <h3 className={responsiveTitle3}>
+            We also work to enrich and support cultural, artistic, sporting and
+            heritage activity and awareness. In promoting these activities we
+            place value on enhancing social inclusion and good citizenship. We
+            aim to help heal divided communities by promoting sustainable
+            community development and engagement.
+          </h3>
+        </SecondTextSection>
+
         <WaysToHelpWrapper>
           <h1 className={responsiveTitle1}>Ways to help out</h1>
           <WaysToHelp>

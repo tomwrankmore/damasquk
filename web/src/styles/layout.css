@@ -9,7 +9,7 @@ html {
 
 body {
   -webkit-font-smoothing: antialiased;
-  background: var(--color-white);
+  background: var(--color-body-bg);
   color: var(--damasq-dark-grey);
   margin: 0;
   /* background-image: url('../assets/images/logo-sign.svg');

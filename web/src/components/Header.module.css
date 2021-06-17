@@ -4,8 +4,7 @@
 .root {
   position: relative;
   z-index: 100;
-  background-color: var(--color-light-grey);
-
+  /* background-color: var(--color-light-grey); */
 }
 
 .wrapper {
