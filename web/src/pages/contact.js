@@ -123,8 +123,8 @@ const ContactPage = (props) => {
       <Container>
         <h1 className={responsiveTitle1}>{page.title}</h1>
         <p>
-          For any enquiries please <a href="mailto=this@this.com">email us</a>{' '}
-          at email@email.com
+          For any enquiries please{' '}
+          <a href="mailto=info@damasquk.org">email us</a> at info@damasquk.org
         </p>
         {/* <ContactContainer>
           <ContactContainerText>

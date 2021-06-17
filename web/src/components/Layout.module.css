@@ -17,11 +17,11 @@
 .footerWrapper {
   box-sizing: border-box;
   max-width: 960px;
-  padding: 0.5em;
+  padding: 1rem;
   margin: 0 auto;
 
   @media (--media-min-small) {
-    padding: 0.875em;
+    padding: 1rem;
   }
 }
 
