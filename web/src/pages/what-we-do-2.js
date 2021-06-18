@@ -160,6 +160,7 @@ const TextContainer = styled.div`
     color: var(--damasq-dark-grey);
     line-height: 2rem;
     font-weight: normal;
+    font-size: var(--font-large-size);
   }
 
   @media ${device.mediaMinXLarge} {

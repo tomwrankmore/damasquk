@@ -129,6 +129,7 @@ const TextContainer = styled.div`
     font-weight: normal;
     line-height: 2rem;
     text-align: center;
+    font-size: var(--font-large-size);
     @media ${device.mediaMinXLarge} {
       text-align: left;
     }
