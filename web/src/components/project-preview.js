@@ -1,33 +1,55 @@
 import { Link } from 'gatsby';
 import React from 'react';
+import styled from 'styled-components';
 import { cn, buildImageObj } from '../lib/helpers';
 import { imageUrlFor } from '../lib/image-url';
 import BlockText from './Block-text';
-
 import styles from './Project-preview.module.css';
 import { responsiveTitle3 } from './typography.module.css';
 
-function ProjectPreview(props) {
+const TextInfo = styled.div`
+  padding: 0 1rem 1rem;
+  height: 100%;
+`;
+
+const Excerpt = styled.div``;
+
+const LeadMediaThumb = styled.div`
+  overflow: hidden;
+`;
+
+const ProjectLink = styled(Link)`
+  img {
+    transition: all 200ms ease 0s;
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+`;
+
+function ProjectPreview({ slug, mainImage, _rawExcerpt, title }) {
   return (
-    <Link className={styles.root} to={`/project/${props.slug.current}`}>
-      <div className={styles.leadMediaThumb}>
-        {props.mainImage && props.mainImage.asset && (
+    <ProjectLink className={styles.root} to={`/project/${slug.current}`}>
+      <LeadMediaThumb className={styles.leadMediaThumb}>
+        {mainImage && mainImage.asset && (
           <img
-            src={imageUrlFor(buildImageObj(props.mainImage))
+            src={imageUrlFor(buildImageObj(mainImage))
               .width(600)
               .height(Math.floor((9 / 16) * 600))
               .url()}
-            alt={props.mainImage.alt}
+            alt={mainImage.alt}
           />
         )}
-      </div>
-      <h3 className={cn(responsiveTitle3, styles.title)}>{props.title}</h3>
-      {props._rawExcerpt && (
-        <div className={styles.excerpt}>
-          <BlockText blocks={props._rawExcerpt} />
-        </div>
-      )}
-    </Link>
+      </LeadMediaThumb>
+      <TextInfo>
+        <h3 className={cn(responsiveTitle3, styles.title)}>{title}</h3>
+        {_rawExcerpt && (
+          <Excerpt className={styles.excerpt}>
+            <BlockText blocks={_rawExcerpt} />
+          </Excerpt>
+        )}
+      </TextInfo>
+    </ProjectLink>
   );
 }
 
