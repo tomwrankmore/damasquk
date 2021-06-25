@@ -10,7 +10,7 @@
   
   .leadMediaThumb {
     position: relative;
-    padding-bottom: 50%;
+    padding-bottom: 66.666%;
     background: #eee;
   
     @nest & img {

@@ -21,7 +21,9 @@ const LeadMediaThumb = styled.div`
 const ProjectLink = styled(Link)`
   img {
     transition: all 200ms ease 0s;
-    &:hover {
+  }
+  &:hover {
+    img {
       transform: scale(1.1);
     }
   }
