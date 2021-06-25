@@ -39,14 +39,19 @@ const MainHeading = styled.h1`
 `;
 
 const LargeLogoWrapper = styled.div`
+  width: 100vw;
+  height: 100vh;
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+`;
+
+const SplashContainer = styled.div`
+  width: 100vw;
+  height: 100vh;
+  position: relative;
 `;
 
 function BigHeroLanding(props) {
+  const outerContainer = useRef(null);
   const taglineRef = useRef(null);
   const headingRef = useRef(null);
   const subHeadingRef = useRef(null);
@@ -70,13 +75,12 @@ function BigHeroLanding(props) {
 
     tl.from(largeLogoRef.current, {
       autoAlpha: 0,
-      // scale: 0.5,
       ease: 'Power4.inOut',
       duration: 0.875,
       xPercent: '40',
-      // delay: 0.5,
+      delay: 0.5,
       onComplete: () =>
-        AnimLargeLogo(contentWrapperRef.current, largeLogoRef.current),
+        AnimLargeLogo(outerContainer.current, largeLogoRef.current),
     });
     tl.from(
       taglineSplit.chars,
@@ -121,7 +125,7 @@ function BigHeroLanding(props) {
   }, []);
 
   return (
-    <>
+    <SplashContainer ref={outerContainer}>
       <BackgroundImage
         className={styles.bigHeroLandingGatsby}
         fluid={props.BackgroundImage}
@@ -159,7 +163,7 @@ function BigHeroLanding(props) {
           </Container>
         </div>
       </BackgroundImage>
-    </>
+    </SplashContainer>
   );
 }
 
