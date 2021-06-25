@@ -79,8 +79,8 @@ function BigHeroLanding(props) {
       duration: 0.875,
       xPercent: '40',
       delay: 0.5,
-      onComplete: () =>
-        AnimLargeLogo(outerContainer.current, largeLogoRef.current),
+      // onComplete: () =>
+      //   AnimLargeLogo(outerContainer.current, largeLogoRef.current),
     });
     tl.from(
       taglineSplit.chars,
