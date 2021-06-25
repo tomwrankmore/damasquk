@@ -125,45 +125,43 @@ function BigHeroLanding(props) {
   }, []);
 
   return (
-    <SplashContainer ref={outerContainer}>
-      <BackgroundImage
-        className={styles.bigHeroLandingGatsby}
-        fluid={props.BackgroundImage}
-      >
-        <div className={styles.bigHeroLanding} ref={contentWrapperRef}>
-          {/* <BackgroundLogoAbs /> */}
-          <LargeLogoWrapper ref={largeLogoRef}>
-            <StaticImage
-              src="../assets/images/logo-mark-truncated.svg"
-              alt="Big Icon"
-              placeholder="none"
-              layout="fullWidth"
-              // width={700}
-              className={styles.BackgroundLogoAbs}
-              style={BGimgStyles}
-            />
-          </LargeLogoWrapper>
+    <BackgroundImage
+      className={styles.bigHeroLandingGatsby}
+      fluid={props.BackgroundImage}
+    >
+      <div className={styles.bigHeroLanding} ref={contentWrapperRef}>
+        {/* <BackgroundLogoAbs /> */}
+        <LargeLogoWrapper ref={largeLogoRef}>
+          <StaticImage
+            src="../assets/images/logo-mark-truncated.svg"
+            alt="Big Icon"
+            placeholder="none"
+            layout="fullWidth"
+            // width={700}
+            className={styles.BackgroundLogoAbs}
+            style={BGimgStyles}
+          />
+        </LargeLogoWrapper>
 
-          <Container>
-            <div className={styles.bigHeroTextContentWrapper}>
-              <h5 className={responsiveTitle5} ref={taglineRef}>
-                Give strength with kindess
-              </h5>
-              <MainHeading className={responsiveTitle1} ref={headingRef}>
-                Damasq is a Leeds based charity focused on uniting communities
-              </MainHeading>
-              <h3 className={responsiveTitle3} ref={subHeadingRef}>
-                We are always looking for volunteers and donations.
-              </h3>
-              <HomeLandingButton to="/about/" ref={buttonRef}>
-                Learn more
-              </HomeLandingButton>
-              {/* </button> */}
-            </div>
-          </Container>
-        </div>
-      </BackgroundImage>
-    </SplashContainer>
+        <Container>
+          <div className={styles.bigHeroTextContentWrapper}>
+            <h5 className={responsiveTitle5} ref={taglineRef}>
+              Give strength with kindess
+            </h5>
+            <MainHeading className={responsiveTitle1} ref={headingRef}>
+              Damasq is a Leeds based charity focused on uniting communities
+            </MainHeading>
+            <h3 className={responsiveTitle3} ref={subHeadingRef}>
+              We are always looking for volunteers and donations.
+            </h3>
+            <HomeLandingButton to="/about/" ref={buttonRef}>
+              Learn more
+            </HomeLandingButton>
+            {/* </button> */}
+          </div>
+        </Container>
+      </div>
+    </BackgroundImage>
   );
 }
 
