@@ -13,6 +13,7 @@ const primaryButtonStyles = {
   cursor: 'pointer',
   outline: 'none',
   display: 'block',
+  visibility: 'hidden',
 };
 
 // const PrimaryButton = ({ children, to, myClassName }) => (
@@ -21,7 +22,7 @@ const primaryButtonStyles = {
 //   </Link>
 // );
 
-const PrimaryButton = React.forwardRef((props, ref) => (
+const HomeLandingButton = React.forwardRef((props, ref) => (
   <Link
     ref={ref}
     to={props.to}
@@ -32,4 +33,4 @@ const PrimaryButton = React.forwardRef((props, ref) => (
   </Link>
 ));
 
-export default PrimaryButton;
+export default HomeLandingButton;

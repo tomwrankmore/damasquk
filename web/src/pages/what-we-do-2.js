@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { graphql } from 'gatsby';
 import styled from 'styled-components';
-
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { SplitText } from 'gsap/SplitText';
 import Container from '../components/Container';
 import GraphQLErrorList from '../components/Graphql-error-list';
 import SEO from '../components/Seo';
@@ -20,6 +22,8 @@ import {
 } from '../components/typography.module.css';
 import PrimaryButton from '../components/PrimaryButton';
 import BlockContent from '../components/block-content/Index';
+
+gsap.registerPlugin(ScrollTrigger, SplitText);
 
 export const query = graphql`
   query WhatWeDoPageQueryTwo {
@@ -111,6 +115,7 @@ const TextOverlapGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   grid-auto-rows: min-content;
+  overflow: hidden;
   /* @media ${device.mediaMinXLarge} {
     grid-auto-rows: repeat(6, 110px);
   } */
@@ -128,6 +133,7 @@ const TextOverlapGrid = styled.div`
 `;
 
 const Title = styled.h1`
+  visibility: hidden;
   grid-column: 1/-1;
   grid-row: 1;
   z-index: 10;
@@ -161,6 +167,10 @@ const TextContainer = styled.div`
     line-height: 2rem;
     font-weight: normal;
     font-size: var(--font-large-size);
+
+    .lineParent {
+      overflow: hidden;
+    }
   }
 
   @media ${device.mediaMinXLarge} {
@@ -188,7 +198,79 @@ const SecondTextSection = styled.section`
   }
 `;
 
-const GetInvolvedPage = (props) => {
+const WhatWeDoPage = (props) => {
+  const heroRef = useRef(null);
+  const titleRef = useRef(null);
+  const titleTextBox = useRef(null);
+  const heroText = useRef([null]);
+  const titleRefSpan = useRef(null);
+  console.log('titleText = ', heroText.current);
+
+  useEffect(() => {
+    const titleSplit = new SplitText(titleRef.current, { type: 'chars' });
+
+    const textSplitChildLines = new SplitText(heroText.current, {
+      type: 'lines',
+      linesClass: 'lineChild',
+    });
+    const textSplitParentLines = new SplitText(heroText.current, {
+      type: 'lines',
+      linesClass: 'lineParent',
+    });
+
+    gsap.set(titleRef.current, { xPercent: -100 });
+    gsap.set(heroRef.current, { visibility: 'hidden' });
+    const tl = gsap.timeline();
+
+    tl.from(heroRef.current, {
+      autoAlpha: 0,
+      y: 100,
+      ease: 'Back.easeInOut',
+      duration: 1,
+    });
+    tl.to(
+      titleRef.current,
+      {
+        xPercent: 0,
+        autoAlpha: 1,
+        delay: 0.25,
+        ease: 'power4.out',
+      },
+      '<'
+    );
+    tl.from(
+      titleSplit.chars,
+      {
+        opacity: 0,
+        x: -25,
+        ease: 'back(4)',
+        stagger: {
+          from: 'start',
+          each: 0.05,
+        },
+      },
+      '<'
+    );
+    tl.from(
+      titleTextBox.current,
+      {
+        xPercent: 100,
+        ease: 'Power2.out',
+        duration: 0.4,
+      },
+      '<'
+    );
+    tl.from(
+      textSplitChildLines.lines,
+      {
+        yPercent: 100,
+        ease: 'back',
+        stagger: { amount: 0.1 },
+      },
+      '-=0.5'
+    );
+  }, []);
+
   const { data, errors } = props;
   if (errors) {
     return (
@@ -216,15 +298,19 @@ const GetInvolvedPage = (props) => {
     <Layout>
       <SEO title={page.title} />
       <Container>
-        <TextOverlapGrid>
-          <Title className={responsiveTitle1}>
-            <span>{page.title}</span>
+        <TextOverlapGrid ref={heroRef}>
+          <Title className={responsiveTitle1} ref={titleRef}>
+            <span ref={titleRefSpan}>What We Do</span>
           </Title>
-
           <Hero imageData={backgroundImageData} className="hero-ting" />
-
-          <TextContainer>
-            <BlockContent blocks={page._rawBody || []} />
+          <TextContainer ref={titleTextBox}>
+            {/* <BlockContent blocks={page._rawBody || []} /> */}
+            <h3 className={responsiveTitle3} ref={heroText}>
+              DAMASQ works to support refugees, asylum seekers, migrants and
+              minority communities generally. We do this by helping to alleviate
+              poverty through a range of projects and programmes in education,
+              enterprise and employment generation.
+            </h3>
           </TextContainer>
         </TextOverlapGrid>
 
@@ -273,4 +359,4 @@ const GetInvolvedPage = (props) => {
   );
 };
 
-export default GetInvolvedPage;
+export default WhatWeDoPage;

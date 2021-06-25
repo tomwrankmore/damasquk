@@ -1,9 +1,13 @@
 import { format, distanceInWords, differenceInDays } from 'date-fns';
-import React, { useRef, useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { gsap } from 'gsap';
+import { StaticImage } from 'gatsby-plugin-image';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { SplitText } from 'gsap/SplitText';
+import styled from 'styled-components';
 import { useStaticQuery, graphql, Link } from 'gatsby';
 import BackgroundImage from 'gatsby-background-image';
-// import { gsap } from 'gsap';
-
+import { AnimLargeLogo } from './animations';
 import { buildImageObj } from '../lib/helpers';
 import { imageUrlFor } from '../lib/image-url';
 import BlockContent from './block-content/Index';
@@ -16,31 +20,105 @@ import {
 } from './typography.module.css';
 import styles from './Big-hero-landing.module.css';
 import { BackgroundLogoAbs } from './Background-logo-absolute';
-import PrimaryButton from './PrimaryButton';
+import HomeLandingButton from './Home-landing-button';
+
+const BGimgStyles = {
+  position: 'absolute',
+  right: '0vw',
+  top: '35vh',
+  zIndex: '3',
+  maxWidth: '35vw',
+  width: '100%',
+  opacity: '0.65',
+};
+
+const MainHeading = styled.h1`
+  .lineParent {
+    overflow: hidden;
+  }
+`;
+
+const LargeLogoWrapper = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+`;
 
 function BigHeroLanding(props) {
-  // const data = useStaticQuery(graphql`
-  //   query BigHeroQuery {
-  //     bgImg: file(relativePath: { eq: "remi-walle-UOwvwZ9Dy6w-unsplash.jpg" }) {
-  //       childImageSharp {
-  //         fluid(quality: 90, maxWidth: 1920) {
-  //           ...GatsbyImageSharpFluid_withWebp
-  //         }
-  //       }
-  //     }
-  //   }
-  // `);
+  const taglineRef = useRef(null);
+  const headingRef = useRef(null);
+  const subHeadingRef = useRef(null);
+  const buttonRef = useRef(null);
+  const contentWrapperRef = useRef(null);
+  const largeLogoRef = useRef(null);
 
-  // const textContentRef = useRef(null);
+  useEffect(() => {
+    const taglineSplit = new SplitText(taglineRef.current, { type: 'chars' });
 
-  // useEffect(() => {
-  //   gsap.from(textContentRef.current, {
-  //     duration: 1,
-  //     autoAlpha: 0,
-  //     y: 30,
-  //     ease: 'back',
-  //   });
-  // }, []);
+    const headingSplitChildLines = new SplitText(headingRef.current, {
+      type: 'lines',
+      linesClass: 'lineChild',
+    });
+    const headingSplitParentLines = new SplitText(headingRef.current, {
+      type: 'lines',
+      linesClass: 'lineParent',
+    });
+
+    const tl = gsap.timeline();
+
+    tl.from(largeLogoRef.current, {
+      autoAlpha: 0,
+      // scale: 0.5,
+      ease: 'Power4.inOut',
+      duration: 0.875,
+      xPercent: '40',
+      // delay: 0.5,
+      onComplete: () =>
+        AnimLargeLogo(contentWrapperRef.current, largeLogoRef.current),
+    });
+    tl.from(
+      taglineSplit.chars,
+      {
+        opacity: 0,
+        duration: 0.2,
+        x: -5,
+        ease: 'back(4)',
+        stagger: {
+          from: 'start',
+          each: 0.025,
+        },
+      },
+      '<'
+    );
+    tl.from(
+      headingSplitChildLines.lines,
+      {
+        opacity: 0,
+        yPercent: 100,
+        ease: 'back',
+        stagger: { amount: 0.1 },
+      },
+      '<0.25'
+    );
+    tl.from(
+      subHeadingRef.current,
+      {
+        opacity: 0,
+        yPercent: 100,
+      },
+      '<0.25'
+    );
+    tl.from(
+      buttonRef.current,
+      {
+        autoAlpha: 0,
+        y: 25,
+      },
+      '<'
+    );
+  }, []);
 
   return (
     <>
@@ -48,25 +126,34 @@ function BigHeroLanding(props) {
         className={styles.bigHeroLandingGatsby}
         fluid={props.BackgroundImage}
       >
-        <div className={styles.bigHeroLanding}>
-          <BackgroundLogoAbs />
+        <div className={styles.bigHeroLanding} ref={contentWrapperRef}>
+          {/* <BackgroundLogoAbs /> */}
+          <LargeLogoWrapper ref={largeLogoRef}>
+            <StaticImage
+              src="../assets/images/logo-mark-truncated.svg"
+              alt="Big Icon"
+              placeholder="none"
+              layout="fullWidth"
+              // width={700}
+              className={styles.BackgroundLogoAbs}
+              style={BGimgStyles}
+            />
+          </LargeLogoWrapper>
+
           <Container>
-            <div
-              // ref={textContentRef}
-              className={styles.bigHeroTextContentWrapper}
-            >
-              <h5 className={responsiveTitle5}>Give strength with kindess</h5>
-              <h1 className={responsiveTitle1}>
+            <div className={styles.bigHeroTextContentWrapper}>
+              <h5 className={responsiveTitle5} ref={taglineRef}>
+                Give strength with kindess
+              </h5>
+              <MainHeading className={responsiveTitle1} ref={headingRef}>
                 Damasq is a Leeds based charity focused on uniting communities
-              </h1>
-              <h3 className={responsiveTitle3}>
+              </MainHeading>
+              <h3 className={responsiveTitle3} ref={subHeadingRef}>
                 We are always looking for volunteers and donations.
               </h3>
-              {/* <button type="button" className={styles.learnMore}> */}
-              {/* <Link className={primaryButton} to="/about/">
-            Learn more
-          </Link> */}
-              <PrimaryButton to="/about/">Learn more</PrimaryButton>
+              <HomeLandingButton to="/about/" ref={buttonRef}>
+                Learn more
+              </HomeLandingButton>
               {/* </button> */}
             </div>
           </Container>

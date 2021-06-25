@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { graphql } from 'gatsby';
-
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { SplitText } from 'gsap/SplitText';
 import BackgroundImage from 'gatsby-background-image';
 import { mapEdgesToNodes, filterOutDocsWithoutSlugs } from '../lib/helpers';
 import BlogPostPreviewGrid from '../components/Blog-post-preview-grid';
