@@ -23,13 +23,13 @@ import { BackgroundLogoAbs } from './Background-logo-absolute';
 import HomeLandingButton from './Home-landing-button';
 
 const BGimgStyles = {
-  position: 'absolute',
-  right: '0vw',
-  top: '35vh',
-  zIndex: '3',
-  maxWidth: '35vw',
-  width: '100%',
-  opacity: '0.65',
+  // position: 'absolute',
+  // right: '0vw',
+  // top: '35vh',
+  // zIndex: '3',
+  // maxWidth: '35vw',
+  // width: '100%',
+  // opacity: '0.65',
 };
 
 const MainHeading = styled.h1`
@@ -38,10 +38,18 @@ const MainHeading = styled.h1`
   }
 `;
 
-const LargeLogoWrapper = styled.div`
+const HeroContainer = styled.div`
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - 121px);
+  position: relative;
+`;
+
+const LargeLogoWrapper = styled.div`
+  width: 100%;
   position: absolute;
+  max-width: 35vw;
+  top: 35vh;
+  right: 0;
 `;
 
 const SplashContainer = styled.div`
@@ -51,7 +59,7 @@ const SplashContainer = styled.div`
 `;
 
 function BigHeroLanding(props) {
-  const outerContainer = useRef(null);
+  const heroContainer = useRef(null);
   const taglineRef = useRef(null);
   const headingRef = useRef(null);
   const subHeadingRef = useRef(null);
@@ -79,8 +87,8 @@ function BigHeroLanding(props) {
       duration: 0.875,
       xPercent: '40',
       delay: 0.5,
-      // onComplete: () =>
-      //   AnimLargeLogo(outerContainer.current, largeLogoRef.current),
+      onComplete: () =>
+        AnimLargeLogo(heroContainer.current, largeLogoRef.current),
     });
     tl.from(
       taglineSplit.chars,
@@ -125,43 +133,46 @@ function BigHeroLanding(props) {
   }, []);
 
   return (
-    <BackgroundImage
-      className={styles.bigHeroLandingGatsby}
-      fluid={props.BackgroundImage}
-    >
-      <div className={styles.bigHeroLanding} ref={contentWrapperRef}>
-        {/* <BackgroundLogoAbs /> */}
-        <LargeLogoWrapper ref={largeLogoRef}>
-          <StaticImage
-            src="../assets/images/logo-mark-truncated.svg"
-            alt="Big Icon"
-            placeholder="none"
-            layout="fullWidth"
-            // width={700}
-            className={styles.BackgroundLogoAbs}
-            style={BGimgStyles}
-          />
-        </LargeLogoWrapper>
+    <>
+      <HeroContainer ref={heroContainer}>
+        <BackgroundImage
+          className={styles.bigHeroLandingGatsby}
+          fluid={props.BackgroundImage}
+        >
+          <div className={styles.bigHeroLanding} ref={contentWrapperRef}>
+            {/* <BackgroundLogoAbs /> */}
+            <LargeLogoWrapper ref={largeLogoRef}>
+              <StaticImage
+                src="../assets/images/logo-mark-truncated.svg"
+                alt="Big Icon"
+                placeholder="none"
+                layout="fullWidth"
+                className={styles.BackgroundLogoAbs}
+                style={BGimgStyles}
+              />
+            </LargeLogoWrapper>
 
-        <Container>
-          <div className={styles.bigHeroTextContentWrapper}>
-            <h5 className={responsiveTitle5} ref={taglineRef}>
-              Give strength with kindess
-            </h5>
-            <MainHeading className={responsiveTitle1} ref={headingRef}>
-              Damasq is a Leeds based charity focused on uniting communities
-            </MainHeading>
-            <h3 className={responsiveTitle3} ref={subHeadingRef}>
-              We are always looking for volunteers and donations.
-            </h3>
-            <HomeLandingButton to="/about/" ref={buttonRef}>
-              Learn more
-            </HomeLandingButton>
-            {/* </button> */}
+            <Container>
+              <div className={styles.bigHeroTextContentWrapper}>
+                <h5 className={responsiveTitle5} ref={taglineRef}>
+                  Give strength with kindess
+                </h5>
+                <MainHeading className={responsiveTitle1} ref={headingRef}>
+                  Damasq is a Leeds based charity focused on uniting communities
+                </MainHeading>
+                <h3 className={responsiveTitle3} ref={subHeadingRef}>
+                  We are always looking for volunteers and donations.
+                </h3>
+                <HomeLandingButton to="/about/" ref={buttonRef}>
+                  Learn more
+                </HomeLandingButton>
+                {/* </button> */}
+              </div>
+            </Container>
           </div>
-        </Container>
-      </div>
-    </BackgroundImage>
+        </BackgroundImage>
+      </HeroContainer>
+    </>
   );
 }
 
