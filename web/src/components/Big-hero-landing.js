@@ -42,6 +42,7 @@ const HeroContainer = styled.div`
   width: 100vw;
   height: calc(100vh - 121px);
   position: relative;
+  visibility: hidden;
 `;
 
 const LargeLogoWrapper = styled.div`
@@ -80,7 +81,10 @@ function BigHeroLanding(props) {
     });
 
     const tl = gsap.timeline();
-
+    tl.from(heroContainer.current, {
+      autoAlpha: 0,
+      delay: 0.25,
+    });
     tl.from(largeLogoRef.current, {
       autoAlpha: 0,
       ease: 'Power4.inOut',
