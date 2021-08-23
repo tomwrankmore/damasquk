@@ -300,7 +300,7 @@ const GetInvolvedPage = (props) => {
           <TextContainer ref={titleTextBox}>
             {/* <BlockContent blocks={page._rawBody || []} /> */}
             <h3 className={responsiveTitle3} ref={heroText}>
-              As a grass roots, independent charity we are always looking for
+              As a grass roots, non profit company we are always looking for
               people to help with all aspects of the work we do – from running
               workshops, helping with our wide range of exciting activities and
               projects, creating content for our social media or sharing your
@@ -316,7 +316,7 @@ const GetInvolvedPage = (props) => {
             <Item>
               <h3 className={responsiveTitle3}>Donate</h3>
               <p className={small}>
-                We are a not for profit charity and we rely on donations from
+                We are a not for profit company and we rely on donations from
                 the public to continue our work.
               </p>
               <PrimaryButton to="/donate">Donate</PrimaryButton>

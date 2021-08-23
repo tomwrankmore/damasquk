@@ -61,7 +61,8 @@ const Layout = ({
         </div> */}
 
         <div className={styles.siteInfo}>
-          {/* {companyInfo.name} */}© Damasq {new Date().getFullYear()}
+          {/* {companyInfo.name} */}© Damasq {new Date().getFullYear()}, Company
+          Number: 10607104
           {/* , Built with{' '}
           <a href="https://www.sanity.io">Sanity</a> &amp;
           {` `}

@@ -162,7 +162,8 @@ function BigHeroLanding(props) {
                   Give strength with kindess
                 </h5>
                 <MainHeading className={responsiveTitle1} ref={headingRef}>
-                  Damasq is a Leeds based charity focused on uniting communities
+                  Damasq is a Leeds based non profit company focused on uniting
+                  communities
                 </MainHeading>
                 <h3 className={responsiveTitle3} ref={subHeadingRef}>
                   We are always looking for volunteers and donations.

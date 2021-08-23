@@ -23,6 +23,7 @@ const AnimLargeLogo = (Container, Logo) => {
     {
       y: 1200,
       autoAlpha: 0,
+      scale: '2',
     },
     '>'
   );

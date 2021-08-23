@@ -182,7 +182,7 @@ const WhatWeDoPage = (props) => {
             <Item>
               <h3 className={responsiveTitle3}>Donate</h3>
               <p className={small}>
-                We are a not for profit charity and we rely on donations from
+                We are a not for profit company and we rely on donations from
                 the public to continue our work.
               </p>
               <PrimaryButton to="/donate">Donate</PrimaryButton>
